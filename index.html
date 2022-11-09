@@ -26,7 +26,7 @@
 							<ul>
 								<li><a href="#intro">Intro</a></li>
 								<li><a href="#work">Projects</a></li>
-								<li><a href="#about">About</a></li>
+								<li><a href="#about">About Me</a></li>
 								
 								<!--<li><a href="#elements">Elements</a></li>-->
 							</ul>
@@ -41,7 +41,7 @@
 								<h2 class="major"></h2>
 								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
 								<p> I am currently in the Master in Data Science Program at UC Berkeley.
-									As of now, the courses I am taking are Introduction to Data Science Programming, Research Design and Applications. 
+									As of now, the courses I am taking are Statistics for Data Science and Introduction to Data Engineering. Prior course I have completed are Introduction to Data Science Programming, Research Design and Applications. 
 									I'm pursuing a career in Data Engineering and Machine Learning.</p>
 								
 								<p> I have gained a certification from completing a Python Bootcamp from Udemy, 
@@ -51,7 +51,10 @@
 									For my relevant work experience I have developed an automated dashboard viewable on SharePoint. 
 									I connected the Dashboard to a SQL server and worked with the Quality Assurance SME on KPI/metrics displayed. 
 									The dashboard was automated to update on a weekly frequency.</p>
-								<P>Click here to check out my <a href="#work"> work</a>.</P>
+								<P><a href="#work"> Click here to check out my projects</a>.
+								<br> If you would like to contact me please reach out via email (celee@berkeley.edu).
+								</P>
+
 								
 							</article>
 
@@ -59,9 +62,12 @@
 							<article id="work">
 								<h2 class="major">Work</h2>
 								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
-								<P>My berkeley course material can be found within this <a href="https://github.com/ejunlee/Berkeley_MIDS/tree/main"> repo</a>.</P>
-								<p>The games I have developed in Python can be found within this<a href="https://github.com/ejunlee/Fun_Programs"> repo</a>.</p>
-								
+								<p> Below are buttons that link to different projects I have worked on my own or my coursework at Berkeley.
+									Each project goes into depth of the different analysis I or a team I was on conducted. 
+									Please check out any that interest you.</p>
+								<P>My berkeley programming course material can be found within this <a href="https://github.com/ejunlee/Berkeley_MIDS/tree/main"> repo</a>.<br>
+									The games I have developed in Python can be found within this<a href="https://github.com/ejunlee/Fun_Programs"> repo</a>.</P>
+								<button type="button" onclick="location.href='#EDA'"> EDA</button>
 							</article>
 
 						<!-- About -->
@@ -70,11 +76,14 @@
 								<span class="image main"><img src="images/Headshot_Photo.jpg" alt="" /></span>
 								<p>Christian Lee (He/Him)</p>
 								<p>I am pursing a Master's in Data Science at UC Berkeley in pursuit of becoming a Data Scientist in the Tech world. 
-									Currently, I'm a Senior Analyst at CREO working on a plethora of different projects. 
+									Prior to becoming a full time student I was working as a Senior Analyst at CREO working on a plethora of different projects.
+                                    At the consulting firm I help developed 30+ process maps to identify bottlenecks, pain points, and areas to invest in to drive operational improvements.
+                                    Worked with SMEs to assess data governance practices, analytic platforms, data strategy, and data pipelines for cliental.
 								</p>
 								<p> Prior to switching to the data world, I majored in Chemical Engineering at NC State. 
 									I worked as a process/project engineer and ended my career as a project manager. 
-									I have a lot of experience with good documentation practices, developing and executing engineering studies, and commissioning and qualification.
+									I have a lot of experience with good documentation practices, developing and executing engineering studies, and commissioning and qualification of new equipment.
+								<br> Check out my Linkedin page for more work related information.
 								</p>
 								<ul class="icons">
 									<li><a href="https://www.linkedin.com/in/christian-lee08/" class="icon brands fa-linkedin"><span class="label">linkedin</span></a></li>
@@ -82,10 +91,166 @@
 								</ul>
 							</article>
 						
+						<!-- EDA -->
+						<article id="EDA">
+							<button type="button" onclick="location.href='#work'"> Back to Project List</button>
+							<h2></h2>
+							
+							<h2 class="major">Global CO2 Emissions <br>
+								1980 to 2019		
+											
+							</h2>
+							<p>
+								<small>By:Christian Lee, Hardeep Sangha, Jose DelValle</small>
+								<br><a href = "https://github.com/ejunlee/Global-CO2-Emissions-1980-to-2019/tree/main">Click for Github Repo</a>
+							</p>
+								
+								<u>Overview</u>
+								<br>Climate change can negatively impact the world by producing severe droughts, rise in sea levels, and extreme weather conditions resulting in natural disasters on a scale never seen before. Climate change is the accumulation of greenhouse gasses resulting in long-term change in global temperature and weather patterns. There are many natural reasons for greenhouse gasses to be emitted, but a significant portion of emissions are generated by humans. Greenhouse gasses are comprised of 7 types of gasses and the greenhouse gas that is largely generated due to the human factor* is Carbon Dioxide (CO2).  
+
+								In this project we will be exploring multiple aspects and uncovering insights with CO2 emission with population growth and income groups, countries energy production and consumption, and clean energy production.
+								<br>
+								<br>
+								<u>By exploring the datasets of CO2 levels, we intend to discover:</u>  
+								<br>1. What is the direct impact of population growth w/o accounting for energy type to CO2?
+								<br>2. What trends are we seeing in the adoption of different energy types across countries? Are these trends different based on the country's income group - low, medium, high?
+								<br>a. How does the energy trend look in the world regions?
+								<br>b. What is the trend for the death rate per 100K population based on air pollution, and is there any relationship to CO2 emission?
+								<br>3. What is the world’s trend on renewable energy production?
+								<br>4. Which large country had the greatest percent decrease in CO2 emissions from their peak?
+							</p>
+							
+							<p>
+								<u>Data Preperation</u><br>
+								When we initially started this project, we tried to find a main dataset that was already in good condition. There were several other topics we thought of doing but their datasets were far too messy. Because of this, there wasn’t too much that we needed to do to get our data ready for analyzing. Most of our files came in completely fine but there was one (Supplemental Dataset 1) that had 4 extra rows on the top for the title and date. Python would get an error when trying to import the data, so we had to manually delete the top 4 rows. 
+								<br><br>
+								After this we were able to import all the datasets with no problem. Once we stored the data as dataframes the next step was to get rid of any columns that didn’t have any information a.k.a. NaN values. We did this to all four of our dataframes and moved on to renaming the columns to something that was easier to use. We renamed any similar columns to have the exact same name, for example “Country Name” would be renamed to “Country” because it’s shorter, easier to work with (spaces make referring to a column difficult), and it made all the datasets match. Next, we needed to make all the dataframes have only 1 year column. Supplemental Dataset 1 had columns for every year, so we melted that dataframe to match the others.
+								<br><br>
+								We needed to be able to work with the numeric values of our data, so we converted all numeric values into numeric types. This way we could use aggregation functions on them like sum(), max(), and mean(). After this we wanted to combine several of our dataframes together to create one big final dataframe that we could all use to start with. In order to do this, Supplemental Dataframe 2 needed to have a column of “Energy_type” with the value of “all_energy_types”. Then we merged Supplemental Dataframe 2 with Supplemental Dataframe 1 to create a combined supplemental dataframe. Finally, we merged our Main Dataframe with the combined supplemental dataframe and created the final dataframe. In the end, our final dataframe contains 55,440 rows and 14 columns. It has information from 1980 to 2019 and contains information on 230 countries. 
+								<br><br>
+								Supplemental Dataframe 3 was added so we could ask even more questions about the impact of CO2 on deaths. We decided to create another version of the final dataframe because we already had invested a lot of time into the project and didn’t want to change the original final dataframe. We also added Supplemental Dataframe 4 that included all the countries and their country codes because the main dataset didn’t include every country. This dataframe was added to create a time series choropleth map.
+							</p>
+							<p>
+								<b>What is the direct impact of population growth w/o accounting for energy type to CO2?</b>
+								<br>We have observed no direct relationship between population growth experienced by a country and its CO2 emission levels. It is observed that industrialized nations tend to produce higher levels of CO2 compared to countries with similar population growth but much less industrialization and manufacturing capabilities.
+								<center><br> <img src="images/EDA/fig1.png"  width = 525 height =300>
+								<br> Figure 1: Top 10 countries with highest total CO2 emissions
+								</center>
+								<br>Figure 1 showing the total C02 emission by top 10 countries. At the start of the research, we were assuming China, and India to be the top two producers. Our analysis showed that the USA has emitted the highest total CO2 for the period recorded in this study (1980 – 2019) closely followed by China.
+								<br>
+								<center><br> <img src="images/EDA/fig2.png"  width = 525 height =300>
+									<br> Figure 2: CO2 emission, and population growth trend for USA, and China
+								</center>
+								<br>
+								Figure 2 above shows detailed CO2 emissions by China, and the US over the research period. Both countries show a growth in population trend, the US over the last decade has made efforts to reduce the CO2 emission, although more recently it has started trending upwards again. China made some effort to reduce CO2 emission in the last decade as well but is trending upward again and is the top CO2 emitter for the current decade.
+								<br>
+								<center><br> <img src="images/EDA/fig3.png"  width = 525 height =300>
+									<br> Figure 3: CO2 emission, and population growth trend for Russia, and Japan
+								</center>
+								<br>
+								Figure 3 demonstrates another view to illustrate that although both Japan, and Russia experienced a downward trend in population growth, the CO2 emission didn’t follow the same trend.
+								<br><br>
+								
+								<b>What trends are we seeing in the adoption of different energy types across countries? Are these trends different based on the country's income group - low, medium, high?</b>
+								<br> 
+								<center><br> <img src="images/EDA/fig4.png"  width = 525 height =300>
+								<br> Figure 4: CO2 emission by energy type and income group
+								<br>
+								<img src="images/EDA/tab1.png"  width = 425 height =200>
+								<br>Table 1: Listing the low CO2 emission for low income countries
+								<br> 
+								</center>
+								<br>
+								Note for the data above nuclear and renewables_n_other have no direct CO2 emission and are listed as Zero. Following observations can be made from Figure 4, and Table 1 about the question of adoption of different energy types across countries based on different income group:
+								<br>•	Low-income countries' contribution to the overall C02 emission is the lowest.
+								<br>•	Low-income countries primarily rely on petroleum-based energy types.
+								<br>•	CO2 emission is directly related to the GDP of the income group, higher income group countries are responsible for higher CO2 emission rates.
+								<br>•	Coal based energy type is the highest contributor for Upper middle-income countries
+								<br>•	Petroleum based energy type is the highest contributor for High income countries
+								<br>•	For both Lower middle income, and Upper middle income countries CO2 emission based on natural gas is similar.
+								<br><br>
+								<b>How does the energy trend look in world regions?</b>
+								<br>Note on the dataset – the dataset and the supplement dataset used does not categorize all world countries by ‘Region’ designation, therefore the data analysis and visualization for this sub-question represent a trend of 130 countries as shown in the Table 2.
+								<center>
+								<img src="images/EDA/tab2.png"  width = 425 height =200>
+								<br>Table 2: Population, Number of countries, and CO2 emission by region
+								<br> 
+								</center>
+								<br>
+								It is noticeable that both Former U.S.S.R. and Russia did not have the ‘Region’ designation and are not included in the trend report. The North American region contains the United States, and Canada. 
+								From Table 2 the clear trend is that most of the CO2 emission currently is happening from the East Asia and Pacific region that includes China which is the global manufacturing hub.
+								<br><br>
+								In the future if additional data becomes available for the past three years (2020-2022) that’ll be an interesting observation for the impact of the sars-cov-2 pandemic and how various global and regional shutdowns impacted the CO2 emission rates.
+								<center><br> <img src="images/EDA/fig5.png"  width = 525 height =300>
+									<br> Figure 5: Trend report by region for CO2 emissions, number of countries, and population
+								</center>
+								Figure 5 shows the CO2 emissions by region and total number of countries, and population contributing to the trend. Table 2 dataset is used to build out Figure 5.
+								<br><br>
+
+								<b>What is the trend for the death rate per 100K population based on air pollution?</b>
+									Figure 5 shows the CO2 emissions by region and total number of countries, and population contributing to the trend. Table 2 dataset is used to build out Figure 5.
+								<br>Note: There is a detailed heat map showing the trend in the death rate for each country in the jupyter notebook, for the sake of brevity, only top 20 countries with the highest death rate for the year 2019 are included in this report, Figure 6 below shows that using bar plot.
+								<br><br>
+								We did additional analysis on the death rate per 100K based on air pollution and noticed that the CO2 emission for Solomon Islands is one of the lowest on record. In order to ensure that the death rate per 100K was in fact this high for Solomon Islands we did literature research (Health Impacts of Climate Change in the Solomon Islands: An Assessment and Adaptation Action Plan: Jeffery T Spickett, and Dianne Katscherian 2014 Jun 24.) and uncovered that the death rate due to air pollution in Solomon Islands is a concern and health intervention is needed to increase understanding of the possible links between climate change, air quality, and health. 
+								<center><br> <img src="images/EDA/fig6.png"  width = 525 height =300>
+									<br> Figure 6: Top 20 countries by death rate per 100K due to air pollution, and corresponding CO2 emission for the year 2019
+								</center>
+								<br>
+								In conclusion we observe no relationship between the CO2 emission and death rate per 100K based on air pollution as plotted in Figure 6.
+								<br><br>
+
+								<b>What is the world’s trend on renewable energy?</b>
+								<br>We were interested to see if the world is taking climate change seriously and how has the world responded to the topic by generating renewable energy. By creating three different data frames we can plot, seen in Figure 7, the energy trend for renewable energy, nuclear energy, and the combination nuclear and renewable energy production per year.
+								<center><br> <img src="images/EDA/fig7.png"  width = 525 height =300>
+									<br> Figure 7: The world’s clean energy production is increasing every year.
+								</center>
+								<br>The renewable energy production has slowly increased until 2003 where it has increased at a higher rate than ever seen before. Nuclear energy had a large increase in the 1980 to 1985 and stopped increasing as much when renewable energy started to pick up. From 2004 to 2019 there has been a rise of renewable energy and a decrease in nuclear energy. The overall trend for the world is an increase in renewable energy and nuclear energy. We have defined clean energy as the summation of nuclear and renewable energy.
+								<center><br> <img src="images/EDA/fig8.png"  width = 525 height =300>
+									<br> Figure 8: China produces the most clean energy.
+								</center>
+								<br>The top 10 countries producing clean energy can be seen in Figure 8. China has produced the most renewable energy in 2019 while the US produces the most Nuclear Energy in 2019.  Overall, China produces the most clean energy. The countries in Figure 8 are countries that are in the top 15 highest GDP rankings based on Investopedia[1].
+								<br><br>
+
+								<b>Which large country had the greatest percent decrease in CO2 emissions from their peak?</b>
+								<br>
+								The first step was finding out when a country peaked in CO2 emissions. Once we found out which year was each country’s peak, we looked at any time after that for the lowest CO2 emission year. Then we subtracted the low from the peak to find the total decrease in CO2 emissions. We turned that into a percentage to find out which country had the largest percentage drop from their peak. The results weren’t very informative.
+								<br><br>
+								<center>
+								<img src="images/EDA/tab4.png"  width = 425 height =200>
+								<br>Table 4: Largest percent decrease of all countries
+								</center>
+								<br> 
+								As you can see, our top country was Antarctica and then the U.S. Virgin Islands. Those countries are so small that any small change could cause huge swings in their CO2 levels. This made us update our question to include “large country” and “percent decrease” to avoid ambiguity of what we meant by the word decrease. So, we decided to look at the top 10 countries with the highest total drop in CO2 levels and then sort those by who had the highest percentage drop in CO2 levels. When we did that, we got a much better list. 
+								<br><br>
+								<center>
+								<img src="images/EDA/tab5.png"  width = 425 height =200>
+								<br>Table 5: Better table that shows largest percent decrease of largest CO2 producing Countries
+								<br> 
+								</center>
+								<br>
+								This clearly showed us that Ukraine had the highest percentage drop of all the large countries. Next, we wondered what Ukraine could be doing to achieve the impressive 67% drop in CO2 emissions. We hypothesized that they most likely just stopped producing energy with coal and petroleum and switched over to nuclear or other renewable sources. To test this hypothesis, we had to plot the country’s energy type and production. This allowed us to quickly visualize the trend of all the energy types. What we found confused us. 
+								<br>
+								<center><br> <img src="images/EDA/fig9.png"  width = 525 height =300>
+									<br> Figure 9: Shows Ukraine’s energy production by type, CO2 levels, and Population per year.
+								</center>
+								<br>
+								It looks like Ukraine reduced CO2 levels by reducing the amount of coal production. It's interesting that they didn't increase production in any other forms of energy to compensate for the reduced energy. This made us question what else could be going on. Why wouldn’t Ukraine increase its output to compensate for all the coal energy production loss? We decided to add in Ukraine’s population just to see what it would look like. In question 1 we found out that Japan had a declining population and there wasn’t a correlation with CO2 levels. In that case, Japan’s population had dropped very little, around 2%, and it was a recent development. Whereas in Ukraine’s case, they had a massive 20% decline in population since 1993. Although this probably isn’t the only reason for the drastic decline in CO2 levels, it is most likely a heavy contributor. 
+								</p>
+								<p>
+									<u>Conclusion</u> 
+									<br>
+									After cleaning and exploring the dataset, we have found multiple insights into the different factors affecting CO2 emission. To our surprise there is not a direct relationship between population growth experienced by a country and its CO2 emission levels. It does appear that more industrialized nations emit higher levels of CO2. Looking at the wealth of a nation and its emission of CO2, low-income countries emit the least amount of CO2 compared to other medium and higher income countries. Petroleum based energy has emitted the most CO2 compared to the other energy sources. There are countries that produce more energy than they consume, and the top 3 countries are Russia, Saudi Arabia, and Norway. The accumulation of the excess energy from 1980 to 2019 by the three countries is 1400 Quad BTU. This World in 1980 produced 292 Quad BTU of energy. There can be better planning for the three countries' energy production. The world has taken an initiative in reducing CO2 emissions and has increased the energy production of renewable energy. From 1980 to 2019 there has been a 300% increase in renewable energy production, and this has been a linear increase. 
+
+
+								</p>
+
+						</article>
+
+
 						<!-- Elements -->
 							<article id="elements">
 								<h2 class="major">Elements</h2>
-
+								<!-- The section to the end of the headers are examples -->
 								<section>
 									<h3 class="major">Text</h3>
 									<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
@@ -98,9 +263,7 @@
 									<h5>Heading Level 5</h5>
 									<h6>Heading Level 6</h6>
 									<hr />
-									<h4>Blockquote</h4>
-									<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
-									<h4>Preformatted</h4>
+									
 									<pre><code>i = 0;
 
 while (!deck.isInOrder()) {
@@ -140,9 +303,6 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 									</ol>
 									<h4>Icons</h4>
 									<ul class="icons">
-										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
 										<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
 									</ul>
 
@@ -252,6 +412,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 									</div>
 								</section>
 
+								<!-- Button Functionality for homepage-->
 								<section>
 									<h3 class="major">Buttons</h3>
 									<ul class="actions">
@@ -272,6 +433,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 									</ul>
 								</section>
 
+								<!-- Email Section -->
 								<section>
 									<h3 class="major">Form</h3>
 									<form method="post" action="#">
@@ -328,7 +490,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 				<!-- Footer -->
 					<footer id="footer">
-						<p class="copyright">&copy; Thank you</p>
+						<p class="copyright">Thank you for checking out my portfolio.</p>
 					</footer>
 
 			</div>
