@@ -67,7 +67,13 @@
 									Please check out any that interest you.</p>
 								<P>My berkeley programming course material can be found within this <a href="https://github.com/ejunlee/Berkeley_MIDS/tree/main"> repo</a>.<br>
 									The games I have developed in Python can be found within this<a href="https://github.com/ejunlee/Fun_Programs"> repo</a>.</P>
-								<button type="button" onclick="location.href='#EDA'"> EDA</button>
+								<button style ="margin:3px" type="button" onclick="location.href='#EDA'"> EDA</button>
+								<button style ="margin:3px" type="button" onclick="location.href='#Stats'">Statistical Analysis</button>
+								<button style ="margin:3px" type="button" onclick="location.href='#DataW'">Data Wrangling</button>
+								<button style ="margin:3px" type="button" onclick="location.href='#OOP'">OOP</button>
+								<button style ="margin:3px" type="button" onclick="location.href='#PostSQL'">PostGRE SQL</button>
+								<button style ="margin:3px" type="button" onclick="location.href='#GraphD'">Graph Databases</button>
+								
 							</article>
 
 						<!-- About -->
@@ -80,9 +86,10 @@
                                     At the consulting firm I help developed 30+ process maps to identify bottlenecks, pain points, and areas to invest in to drive operational improvements.
                                     Worked with SMEs to assess data governance practices, analytic platforms, data strategy, and data pipelines for cliental.
 								</p>
-								<p> Prior to switching to the data world, I majored in Chemical Engineering at NC State. 
-									I worked as a process/project engineer and ended my career as a project manager. 
-									I have a lot of experience with good documentation practices, developing and executing engineering studies, and commissioning and qualification of new equipment.
+								<p> 
+								Prior to switching to the data world, I majored in Chemical Engineering at NC State. 
+								I worked as a process/project engineer and ended my career as a project manager. 
+								I have a lot of experience with good documentation practices, developing and executing engineering studies, and commissioning and qualification of new equipment.
 								<br> Check out my Linkedin page for more work related information.
 								</p>
 								<ul class="icons">
@@ -92,7 +99,7 @@
 							</article>
 						
 						<!-- EDA -->
-						<article id="EDA">
+							<article id="EDA">
 							<button type="button" onclick="location.href='#work'"> Back to Project List</button>
 							<h2></h2>
 							
@@ -133,34 +140,34 @@
 							<p>
 								<b>What is the direct impact of population growth w/o accounting for energy type to CO2?</b>
 								<br>We have observed no direct relationship between population growth experienced by a country and its CO2 emission levels. It is observed that industrialized nations tend to produce higher levels of CO2 compared to countries with similar population growth but much less industrialization and manufacturing capabilities.
-								<center><br> <img src="images/EDA/fig1.png"  width = 525 height =300>
-								<br> Figure 1: Top 10 countries with highest total CO2 emissions
+								
+								<center>
+								<span class="image fit"><img src="images/EDA/fig1.png" alt="" <figcaption>Figure 1: Top 10 countries with highest total CO2 emissions</figcaption>  /></span>
 								</center>
-								<br>Figure 1 showing the total C02 emission by top 10 countries. At the start of the research, we were assuming China, and India to be the top two producers. Our analysis showed that the USA has emitted the highest total CO2 for the period recorded in this study (1980 – 2019) closely followed by China.
-								<br>
-								<center><br> <img src="images/EDA/fig2.png"  width = 525 height =300>
-									<br> Figure 2: CO2 emission, and population growth trend for USA, and China
+								
+								Figure 1 showing the total C02 emission by top 10 countries. At the start of the research, we were assuming China, and India to be the top two producers. Our analysis showed that the USA has emitted the highest total CO2 for the period recorded in this study (1980 – 2019) closely followed by China.
+								
+								<center>
+								<br> 
+								<span class="image fit"><img src="images/EDA/fig2.png" alt="" <figcaption>Figure 2: CO2 emission, and population growth trend for USA, and China</figcaption>  /></span>
 								</center>
-								<br>
+								
 								Figure 2 above shows detailed CO2 emissions by China, and the US over the research period. Both countries show a growth in population trend, the US over the last decade has made efforts to reduce the CO2 emission, although more recently it has started trending upwards again. China made some effort to reduce CO2 emission in the last decade as well but is trending upward again and is the top CO2 emitter for the current decade.
-								<br>
-								<center><br> <img src="images/EDA/fig3.png"  width = 525 height =300>
-									<br> Figure 3: CO2 emission, and population growth trend for Russia, and Japan
+								
+								<center>
+								<br> 
+								<span class="image fit"><img src="images/EDA/fig3.png" alt="" <figcaption>Figure 3: CO2 emission, and population growth trend for Russia, and Japan</figcaption>  /></span>
 								</center>
-								<br>
+
 								Figure 3 demonstrates another view to illustrate that although both Japan, and Russia experienced a downward trend in population growth, the CO2 emission didn’t follow the same trend.
 								<br><br>
-								
 								<b>What trends are we seeing in the adoption of different energy types across countries? Are these trends different based on the country's income group - low, medium, high?</b>
-								<br> 
-								<center><br> <img src="images/EDA/fig4.png"  width = 525 height =300>
-								<br> Figure 4: CO2 emission by energy type and income group
-								<br>
-								<img src="images/EDA/tab1.png"  width = 425 height =200>
-								<br>Table 1: Listing the low CO2 emission for low income countries
-								<br> 
+								
+								<center><br> 
+								<span class="image fit"><img src="images/EDA/fig4.png" alt="" <figcaption>Figure 4: CO2 emission by energy type and income group</figcaption>  /></span>
+								<span class="image fit"><img src="images/EDA/tab1.png" alt="" <figcaption>Table 1: Listing the low CO2 emission for low income countries</figcaption>  /></span>
 								</center>
-								<br>
+								
 								Note for the data above nuclear and renewables_n_other have no direct CO2 emission and are listed as Zero. Following observations can be made from Figure 4, and Table 1 about the question of adoption of different energy types across countries based on different income group:
 								<br>•	Low-income countries' contribution to the overall C02 emission is the lowest.
 								<br>•	Low-income countries primarily rely on petroleum-based energy types.
@@ -171,69 +178,94 @@
 								<br><br>
 								<b>How does the energy trend look in world regions?</b>
 								<br>Note on the dataset – the dataset and the supplement dataset used does not categorize all world countries by ‘Region’ designation, therefore the data analysis and visualization for this sub-question represent a trend of 130 countries as shown in the Table 2.
+								
 								<center>
-								<img src="images/EDA/tab2.png"  width = 425 height =200>
-								<br>Table 2: Population, Number of countries, and CO2 emission by region
-								<br> 
-								</center>
 								<br>
+								<span class="image fit">
+								<img src="images/EDA/tab2.png" alt="" <figcaption>Table 2: Population, Number of countries, and CO2 emission by region</figcaption>  />
+								</span> 
+								</center>
+								
 								It is noticeable that both Former U.S.S.R. and Russia did not have the ‘Region’ designation and are not included in the trend report. The North American region contains the United States, and Canada. 
 								From Table 2 the clear trend is that most of the CO2 emission currently is happening from the East Asia and Pacific region that includes China which is the global manufacturing hub.
 								<br><br>
 								In the future if additional data becomes available for the past three years (2020-2022) that’ll be an interesting observation for the impact of the sars-cov-2 pandemic and how various global and regional shutdowns impacted the CO2 emission rates.
-								<center><br> <img src="images/EDA/fig5.png"  width = 525 height =300>
-									<br> Figure 5: Trend report by region for CO2 emissions, number of countries, and population
+								
+								<center>
+								<br> 
+								<span class="image fit">
+								<img src="images/EDA/fig5.png" alt="" <figcaption>Figure 5: Trend report by region for CO2 emissions, number of countries, and population</figcaption>  /></span> 
+								</span>
 								</center>
+								
 								Figure 5 shows the CO2 emissions by region and total number of countries, and population contributing to the trend. Table 2 dataset is used to build out Figure 5.
 								<br><br>
-
 								<b>What is the trend for the death rate per 100K population based on air pollution?</b>
 									Figure 5 shows the CO2 emissions by region and total number of countries, and population contributing to the trend. Table 2 dataset is used to build out Figure 5.
 								<br>Note: There is a detailed heat map showing the trend in the death rate for each country in the jupyter notebook, for the sake of brevity, only top 20 countries with the highest death rate for the year 2019 are included in this report, Figure 6 below shows that using bar plot.
 								<br><br>
 								We did additional analysis on the death rate per 100K based on air pollution and noticed that the CO2 emission for Solomon Islands is one of the lowest on record. In order to ensure that the death rate per 100K was in fact this high for Solomon Islands we did literature research (Health Impacts of Climate Change in the Solomon Islands: An Assessment and Adaptation Action Plan: Jeffery T Spickett, and Dianne Katscherian 2014 Jun 24.) and uncovered that the death rate due to air pollution in Solomon Islands is a concern and health intervention is needed to increase understanding of the possible links between climate change, air quality, and health. 
-								<center><br> <img src="images/EDA/fig6.png"  width = 525 height =300>
-									<br> Figure 6: Top 20 countries by death rate per 100K due to air pollution, and corresponding CO2 emission for the year 2019
-								</center>
+								
+								<center> 
 								<br>
+								<span class="image fit">
+								<img src="images/EDA/fig6.png" alt="" <figcaption>Figure 6: Top 20 countries by death rate per 100K due to air pollution, and corresponding CO2 emission for the year 2019</figcaption>  /></span> 
+								</span>
+								</center>
+								
 								In conclusion we observe no relationship between the CO2 emission and death rate per 100K based on air pollution as plotted in Figure 6.
 								<br><br>
 
 								<b>What is the world’s trend on renewable energy?</b>
 								<br>We were interested to see if the world is taking climate change seriously and how has the world responded to the topic by generating renewable energy. By creating three different data frames we can plot, seen in Figure 7, the energy trend for renewable energy, nuclear energy, and the combination nuclear and renewable energy production per year.
-								<center><br> <img src="images/EDA/fig7.png"  width = 525 height =300>
-									<br> Figure 7: The world’s clean energy production is increasing every year.
+								
+								<center>
+								<br> 
+								<span class="image fit">
+								<img src="images/EDA/fig7.png" alt="" <figcaption>Figure 7: The world’s clean energy production is increasing every year.</figcaption>  /></span> 
+								</span>
 								</center>
-								<br>The renewable energy production has slowly increased until 2003 where it has increased at a higher rate than ever seen before. Nuclear energy had a large increase in the 1980 to 1985 and stopped increasing as much when renewable energy started to pick up. From 2004 to 2019 there has been a rise of renewable energy and a decrease in nuclear energy. The overall trend for the world is an increase in renewable energy and nuclear energy. We have defined clean energy as the summation of nuclear and renewable energy.
-								<center><br> <img src="images/EDA/fig8.png"  width = 525 height =300>
-									<br> Figure 8: China produces the most clean energy.
+								
+								The renewable energy production has slowly increased until 2003 where it has increased at a higher rate than ever seen before. Nuclear energy had a large increase in the 1980 to 1985 and stopped increasing as much when renewable energy started to pick up. From 2004 to 2019 there has been a rise of renewable energy and a decrease in nuclear energy. The overall trend for the world is an increase in renewable energy and nuclear energy. We have defined clean energy as the summation of nuclear and renewable energy.
+								
+								<center>
+								<br> 
+								<span class="image fit">
+								<img src="images/EDA/fig8.png" alt="" <figcaption>Figure 8: China produces the most clean energy.</figcaption>  /></span> 
+								</span>
 								</center>
-								<br>The top 10 countries producing clean energy can be seen in Figure 8. China has produced the most renewable energy in 2019 while the US produces the most Nuclear Energy in 2019.  Overall, China produces the most clean energy. The countries in Figure 8 are countries that are in the top 15 highest GDP rankings based on Investopedia[1].
+								
+								The top 10 countries producing clean energy can be seen in Figure 8. China has produced the most renewable energy in 2019 while the US produces the most Nuclear Energy in 2019.  Overall, China produces the most clean energy. The countries in Figure 8 are countries that are in the top 15 highest GDP rankings based on Investopedia[1].
 								<br><br>
-
 								<b>Which large country had the greatest percent decrease in CO2 emissions from their peak?</b>
 								<br>
 								The first step was finding out when a country peaked in CO2 emissions. Once we found out which year was each country’s peak, we looked at any time after that for the lowest CO2 emission year. Then we subtracted the low from the peak to find the total decrease in CO2 emissions. We turned that into a percentage to find out which country had the largest percentage drop from their peak. The results weren’t very informative.
-								<br><br>
+																
 								<center>
-								<img src="images/EDA/tab4.png"  width = 425 height =200>
-								<br>Table 4: Largest percent decrease of all countries
-								</center>
 								<br> 
+								<span class="image fit">
+								<img src="images/EDA/tab4.png" alt="" <figcaption>Table 4: Largest percent decrease of all countries</figcaption>  /></span> 
+								</span>
+								</center>
+								
 								As you can see, our top country was Antarctica and then the U.S. Virgin Islands. Those countries are so small that any small change could cause huge swings in their CO2 levels. This made us update our question to include “large country” and “percent decrease” to avoid ambiguity of what we meant by the word decrease. So, we decided to look at the top 10 countries with the highest total drop in CO2 levels and then sort those by who had the highest percentage drop in CO2 levels. When we did that, we got a much better list. 
-								<br><br>
+								
 								<center>
-								<img src="images/EDA/tab5.png"  width = 425 height =200>
-								<br>Table 5: Better table that shows largest percent decrease of largest CO2 producing Countries
 								<br> 
+								<span class="image fit">
+								<img src="images/EDA/tab5.png" alt="" <figcaption>Table 5: Better table that shows largest percent decrease of largest CO2 producing Countries</figcaption>  /></span> 
+								</span> 
 								</center>
-								<br>
+
 								This clearly showed us that Ukraine had the highest percentage drop of all the large countries. Next, we wondered what Ukraine could be doing to achieve the impressive 67% drop in CO2 emissions. We hypothesized that they most likely just stopped producing energy with coal and petroleum and switched over to nuclear or other renewable sources. To test this hypothesis, we had to plot the country’s energy type and production. This allowed us to quickly visualize the trend of all the energy types. What we found confused us. 
-								<br>
-								<center><br> <img src="images/EDA/fig9.png"  width = 525 height =300>
-									<br> Figure 9: Shows Ukraine’s energy production by type, CO2 levels, and Population per year.
+								
+								<center>
+								<br> 
+								<span class="image fit">
+								<img src="images/EDA/fig9.png" alt="" <figcaption>Figure 9: Shows Ukraine’s energy production by type, CO2 levels, and Population per year.</figcaption>  /></span> 
+								</span>
 								</center>
-								<br>
+
 								It looks like Ukraine reduced CO2 levels by reducing the amount of coal production. It's interesting that they didn't increase production in any other forms of energy to compensate for the reduced energy. This made us question what else could be going on. Why wouldn’t Ukraine increase its output to compensate for all the coal energy production loss? We decided to add in Ukraine’s population just to see what it would look like. In question 1 we found out that Japan had a declining population and there wasn’t a correlation with CO2 levels. In that case, Japan’s population had dropped very little, around 2%, and it was a recent development. Whereas in Ukraine’s case, they had a massive 20% decline in population since 1993. Although this probably isn’t the only reason for the drastic decline in CO2 levels, it is most likely a heavy contributor. 
 								</p>
 								<p>
@@ -244,8 +276,214 @@
 
 								</p>
 
-						</article>
+							</article>
+						
+						<!-- Statistical Analysis -->
+							<article id ="Stats">
+								<button type="button" onclick="location.href='#work'"> Back to Project List</button>
+								<br><br>
+								<h2 class = "major"> <center>Democrats or Republicans.<br>Who had more difficulty<br> voting?</center> </h2>
+								<p><small>By:Christian Lee, Ivy Chan, Jonathan Hodges, Dipika Kumar</small>
+								<br><a href = "https://github.com/ejunlee/Portfolio/tree/main/Statistical_Analysis">Click for Github Repo</a>
+								</p>
 
+								<p>
+									<strong>1. Importance and Context</strong>
+									<br>
+									Voter engagement for the 2020 United States presidential election was at record levels, with more voters saying “it really matters” who wins the presidency than at any point over the last twenty years. At the same time, challenges such as the pandemic and social unrest led to half of the registered voters indicating it would be difficult to vote in the election. There has been a significant change since October 2018, shortly before that year’s midterm election, when 85% of registered voters said it would be easy to vote in the midterm elections. A better understanding of the various influencers of voter turnout is useful for your organization for party strategists and campaign managers.
+									<br>
+									This study will focus on the 2020 election and better understand the difficulty levels in voting between parties, which is one of many factors impacting voter turnout. Specifically, the goal of the analysis is to address the following research question:
+									<center>Did Democratic voters or Republican voters experience more difficulty voting in the 2020 election? 
+									</center>
+									<br>
+									As consultants we are here to answer this question in order to provide guidance and a foundation for your future research. This includes determining if voter difficulty is a major bellwether of turnout and, if so, further decomposing the factors that lead to these difficulty levels, such as registration, absentee versus in-person voting, long waits at polling places, or bad weather, which can be analyzed in the future. In addition, this analysis will allow us to identify if the difference in difficulty voting between Republicans vs. Democrats was statistically significant in the recent election. If the results are statistically significant, the reasons for difficulty in voting can be further assessed and mitigated.
+									<br><br>
+									<strong>2. Data and Methodology</strong>
+									<br>
+									The study utilized data from the 2020 Times Series Study conducted by the American National Election Studies (ANES). The Times Series Study interviewed 8280 individuals and comprised pre-election and post-election interviews from August 2020 through the end of December 2020. The sample we created from a subset of the ANES Times Series Study is limited in terms of generalizing to the US voter population across all demographic groups. This is due to the fact that we didn't leverage the weighting provided by ANES that is based on the US census.
+									<br><br>
+									Before answering the question of which political party had more difficulty voting, we need to operationalize the concepts, including who is a voter, their political affiliation, and the type of difficulty the individual had. Having this information provides context to exhibit who had more difficulty voting statistically. 
+									<br><br>
+									To classify a respondent as a voter, we look at those who have already registered to vote (at their current address, another address, or without an address) or are planning on registering to vote. As registering is a prerequisite for voting, we believe this variable is a strong indicator of being a voter. For V201008, values 1, 2, and 3 gave information about their registration address, while the other values did not give additional information. V201009 determined if voters were registered to vote, and value 1 gave applicable information for the study. 
+									<br><br>
+									We use the following fields for voter identification:
+									<br><br>
+
+									<div class="table-wrapper">
+										<table>
+											<thead>
+												<tr>
+													<th>Variable_Name</th>
+													<th>Description</th>
+													<th>Value</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>V201008</td>
+													<td>PRE: WHERE IS R REGISTERED TO VOTE (PRE-ELECTION)</td>
+													<td>1,2,3</td>
+												</tr>
+												<tr>
+													<td>V201009</td>
+													<td>PRE: WEB ONLY: IS R WITHOUT ADDRESS REGISTERED TO VOTE (PRE-ELECTION)</td>
+													<td>1</td>
+												</tr>
+											</tbody>
+										</table>
+									There are multiple ways to identify a respondent's respective party, for instance, voting behavior in past elections, voting in the primaries, the party they are currently registered to, etc. The pre-election self-identified affiliation variable was the best way to measure a respondent's political stance due to the quality and quantity of the data. Their political stance before and during the act of voting was taken into consideration. Values 1 and 2 correspond to the political party, while the other values did not give any more information.
+									<br><br>
+									We use the following field for party affiliation:
+									<br><br>
+
+									<div class="table-wrapper">
+										<table>
+											<thead>
+												<tr>
+													<th>Variable_Name</th>
+													<th>Description</th>
+													<th>Value</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>V201228</td>
+													<td>PRE: PARTY ID: DOES R THINK OF SELF AS DEMOCRAT, REPUBLICAN, OR INDEPENDENT</td>
+													<td>1,2</td>
+												</tr>
+											</tbody>
+										</table>
+									How difficult it was for respondents to vote and the main reason respondents did not vote were used to determine the difficulty in voting. The combination of the two factors encompassed how hard it was for voters to cast their vote and why they found voting difficult. The values (2,3,4,5) of having difficulty voting were used in the study to determine which party had more difficulty for V202119. We utilized values that were not in the respondents control that induced difficulty in voting for V202123.
+									<br><br>
+									We use the following field for party affiliation:
+									<br><br>
+
+									<div class="table-wrapper">
+										<table>
+											<thead>
+												<tr>
+													<th>Variable_Name</th>
+													<th>Description</th>
+													<th>Value</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>V202119</td>
+													<td>POST: HOW DIFFICULT WAS IT FOR R TO VOTE</td>
+													<td>2, 3, 4, 5</td>
+												</tr>
+												<tr>
+													<td>V202123</td>
+													<td>POST: MAIN REASON R DID NOT VOTE</td>
+													<td>9, 10, 11, 12, 13, 14, 15</td>
+												</tr>
+											</tbody>
+										</table>
+									After assigning true or false values based on if it was difficult for party members to vote, we observed how many democrats and republicans had difficulty voting. 
+									<center><br> 
+										
+									<span class="image fit"><img src="images/statistical_analysis/fig1.png" alt="" <figcaption>1: Difficulty Voting Democrats(D) vs Republicans(R)</figcaption>  /></span>
+										
+									</center>
+
+									Democrats had more true and false values, which aligned with the population of democrats being higher than republicans. However, we looked into the true and false cases as a percentage of the respective party population samples. The percentage difference between true and false was not notable between parties. Utilizing the party as a grouping variable and defining the response variable as proportional count of difficulties per group we can conduct some statistical tests. 
+									<br><br>
+									We evaluated various reputable hypothesis tests to determine which is best for answering our research question. After reviewing the assumptions that must be met for each test, we were able to narrow our choices down to the two-sample proportion test and the comparison version of the Wilcoxon rank sum test. As we evaluated difficulty as a binary true or false value instead of a scale of ordered categories, the data was determined to be more appropriately wrangled for the proportion test. Additionally, the Wilcoxon rank sum test is of lesser statistical power; therefore, we determined the proportion test was best suited for our analysis from these two test options. 
+									<br><br>
+									The proportional statistic assumptions were validated for proper use of the test statistic. The first assumption for the proportional two-group comparison test was independence and identical distributions (i.i.d). Independence can be assumed since random sampling occurred, and one sample's information cannot be inferred from other samples. However, the population of the samples changes from 8280 (pre-election interviews) to 7,782 (post-election interviews). There is a 7% decrease in the population size, which will not heavily affect the probability distribution. The following other assumptions are correct as the sample population follows a binomial distribution, and the data are simple random values from the population. 
+									<br><br>
+									While evaluating for practical significance, Cohen’s d is not well suited as it requires normality. For our binary data, we chose the Phi coefficient, which yielded a value of -0.031. The result indicates that there is virtually no relationship between political party and voter difficulty, meaning other factors drive difficulty.
+									<br><br>
+									Below is the accounting table summarizing the data wrangling after the exploratory data analysis (EDA) of the dataset.
+									<br><br>
+									<div class="table-wrapper">
+										<table>
+											<thead>
+												<tr>
+													<th>Cause</th>
+													<th>Number of Samples Available for Analysis (after removal for cause)</th>
+													<th>Removed Number Samples for cause</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Start</td>
+													<td>8280</td>
+													<td>0</td>
+												</tr>
+												<tr>
+													<td>Non-Voter</td>
+													<td>7888</td>
+													<td>392</td>
+												</tr>
+												<tr>
+													<td>Independents (non-partisans) or no party affiliation provided</td>
+													<td>5280</td>
+													<td>2608</td>
+												</tr>
+											</tbody>
+											<tfoot>
+												<tr>
+													<th colspan="3">
+													<font size= "-1"><i>Note: For the response variable value that is not included in the selections, we assign a binary/boolean value to the record. Therefore, we do not have any missing or out-of-range response variable values. </i> </font>
+	
+													</th>
+												</tr>
+											</tfoot>
+										</table>
+										
+										<strong>3. Result</strong>
+										<br>
+										As we have two independent samples, Democratic voters and Republican voters, and difficulty being defined and organized as binary/boolean values, we derived the counts for total voters and the counts for voters with difficulty for each party. We use the proportion hypothesis test for binary data. 
+										<br><br>
+										<i><strong>Null Hypothesis</strong>: The proportion of Democrat voters with difficulty voting is equal to the proportion of Republican voters with difficulty voting.
+										<br>
+										H0: p1=p2, versus select one HA: p1≠p2 
+										</i>
+										<br><br>
+										The proportion hypothesis test returns a p-value of 0.02847, which leads us to fail to reject the null hypothesis as it is not within the rejection region (< 0.025).The result is not statistically significant.
+										<br>
+										<center> <span class = "image fit"> <img src="images/statistical_analysis/fig2.png"></span>
+										</center>
+										<strong>4. Discussion</strong>
+										While this is limited based on how Democrats and Republicans responded to ANES interviews, our study found evidence that voting difficulty does not have a strong relationship with the voter's political party. It is consistent with our findings that there is no significant difference in the Democrat and Republican populations we compared for voting difficulty. Additionally, we have shown that difficulty wasn’t experienced at a very high rate across either party, with just over 10% of Democrats and Republicans expressing this in their survey responses. 
+										<br>
+										Since the 2020 election had the highest turnout in United States history, it does not appear that difficulty had a significant role in preventing people from getting to the polls. Instead, it may make sense for future research to look at other predictors of voter turnout, such as education or socioeconomic status.
+
+								</p>
+								
+								
+
+							</article>
+						
+						<!-- Data Wrangling -->
+							<article id ="DataW">
+								<button type="button" onclick="location.href='#work'"> Back to Project List</button>
+								<h2> Report Title </h2>
+
+							</article>
+
+						<!-- OOP -->
+							<article id ="OOP">
+								<button type="button" onclick="location.href='#work'"> Back to Project List</button>
+								<h2> Report Title </h2>
+
+							</article>
+
+						<!-- PostGRE SQL -->
+							<article id ="PostSQL">
+								<button type="button" onclick="location.href='#work'"> Back to Project List</button>
+								<h2> Report Title </h2>
+
+							</article>
+
+						<!-- Graph Databasses -->
+							<article id ="GraphD">
+								<button type="button" onclick="location.href='#work'"> Back to Project List</button>
+								<h2> Report Title </h2>
+
+							</article>
 
 						<!-- Elements -->
 							<article id="elements">
