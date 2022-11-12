@@ -60,18 +60,19 @@
 
 						<!-- Work -->
 							<article id="work">
-								<h2 class="major">Work</h2>
+								<h2 class="major">Projects</h2>
 								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
-								<p> Below are buttons that link to different projects I have worked on my own or my coursework at Berkeley.
-									Each project goes into depth of the different analysis I or a team I was on conducted. 
+								<p> Below are buttons that links to different highlighted projects I have worked on my own or my coursework at Berkeley.
+									Each project goes into depth of the different analysis I or a team I collaborated with conducted. 
 									Please check out any that interest you.</p>
 								<P>My berkeley programming course material can be found within this <a href="https://github.com/ejunlee/Berkeley_MIDS/tree/main"> repo</a>.<br>
 									The games I have developed in Python can be found within this<a href="https://github.com/ejunlee/Fun_Programs"> repo</a>.</P>
-								<button style ="margin:3px" type="button" onclick="location.href='#EDA'"> EDA</button>
-								<button style ="margin:3px" type="button" onclick="location.href='#Stats'">Statistical Analysis</button>
-								<button style ="margin:3px" type="button" onclick="location.href='#DataW'">Data Wrangling</button>
 								<button style ="margin:3px" type="button" onclick="location.href='#OOP'">OOP</button>
+								<button style ="margin:3px" type="button" onclick="location.href='#EDA'"> EDA</button>
 								<button style ="margin:3px" type="button" onclick="location.href='#PostSQL'">PostGRE SQL</button>
+								<button style ="margin:3px" type="button" onclick="location.href='#DataW'">Data Wrangling</button>
+								<button style ="margin:3px" type="button" onclick="location.href='#Stats'">Statistical Analysis</button>
+								<button style ="margin:3px" type="button" onclick="location.href='#Causal'">Causal Modeling</button>		
 								<button style ="margin:3px" type="button" onclick="location.href='#GraphD'">Graph Databases</button>
 								
 							</article>
@@ -108,8 +109,8 @@
 											
 							</h2>
 							<p>
-								<small>By:Christian Lee, Hardeep Sangha, Jose DelValle</small>
-								<br><a href = "https://github.com/ejunlee/Global-CO2-Emissions-1980-to-2019/tree/main">Click for Github Repo</a>
+								<small>By: Christian Lee, Hardeep Sangha, Jose DelValle</small>
+								<br><a href = "https://github.com/ejunlee/Global-CO2-Emissions-1980-to-2019/tree/main">Click for the Github Repo</a>
 							</p>
 								
 								<u>Overview</u>
@@ -298,8 +299,8 @@
 								<button type="button" onclick="location.href='#work'"> Back to Project List</button>
 								<br><br>
 								<h2 class = "major"> <center>Democrats or Republicans.<br>Who had more difficulty<br> voting?</center> </h2>
-								<p><small>By:Christian Lee, Ivy Chan, Jonathan Hodges, Dipika Kumar</small>
-								<br><a href = "https://github.com/ejunlee/Portfolio/tree/main/Statistical_Analysis">Click for Github Repo</a>
+								<p><small>By: Christian Lee, Ivy Chan, Jonathan Hodges, Dipika Kumar</small>
+								<br><a href = "https://github.com/ejunlee/Portfolio/tree/main/Statistical_Analysis">Click for the Github Repo</a>
 								</p>
 
 								<p>
@@ -474,31 +475,163 @@
 						<!-- Data Wrangling -->
 							<article id ="DataW">
 								<button type="button" onclick="location.href='#work'"> Back to Project List</button>
-								<h2> Report Title </h2>
+								<h2> Writting the Report </h2>
 
 							</article>
 
 						<!-- OOP -->
 							<article id ="OOP">
 								<button type="button" onclick="location.href='#work'"> Back to Project List</button>
-								<h2> Report Title </h2>
+								<br><br>
+								<h2 class = "major">Building a Second-Price<br>Auction: OOP Competition</h2>
+								<p>By: Christian Lee
+								<br><a href = "https://github.com/ejunlee/Portfolio/tree/main/OOP">Click for the Github Repo</a>
+								</p>
+
+								<p>
+								<u><strong>Introduction</strong></u>
+								<br>
+								You have been hired by a major retailer to develop algorithms for an online ad auction. Your client knows a little about the multi-armed bandit literature and recognizes that it can spend money to explore, learning how likely users are to click on ads, or to exploit, spending on the most promising users to maximize immediate payoffs. At the same time, there are other companies participating in the auction that may outbid your client, potentially interfering with these goals. Your task is to model the ad auction and develop an effective algorithm for bidding in a landscape of strategic competitors. Your client plans to test your bidding algorithm against other bidding algorithms contributed by other data scientists, in order to select the most promising algorithm.
+								<br><br>
+								<u><strong>The Auction Rules</strong></u>
+								<br>
+								The Auction has a set of bidders and users and multiple rounds representing an event which a user navigates to a website with a space for an ad. When this occurs the group of bidders will place to have an opportunity to show the select user their ad.  The user may click or not click the ad and the winning bidder gets to observe the users behavior. The rule is the same as a second price sealed-bid auction.
+								<br><br>
+								There are num_users User s, numbered from 0 to num_users - 1 . The number corresponding to a user will be called its user_id . Each user has a secret probability of clicking, whenever it is shown an ad. The probability is the same, no matter which Bidder gets to show the ad, and the probability never changes. The events of clicking on each ad are mutually independent. When a user is created, the secret probability is drawn from a uniform distribution from 0 to 1.
+								<br><br>
+								There is a set of Bidder s. Each Bidder begins with a balance of 0 dollars. The objective is to finish the game with as high a balance as possible. At some points during the game, the Bidder 's balance may become negative, and there is no penalty when this occurs.
+								<br><br>
+								The Auction occurs in rounds, and the total number of rounds is num_rounds. In each round, a second-price auction is conducted for a randomly chosen User. Each round proceeds as follows:
+								<br>
+								1. A User is chosen at random, with all User s having the same probability of being chosen. Note that a User may be chosen during more than one round. 
+								<br>
+								2. Each Bidder is told the user_id of the chosen User and gets to make a bid. The bid can be any non-negative amount of money in dollars. A Bidder does not get to know how much any other Bidder has bid. 
+								<br>
+								3. The winner of the auction is the Bidder with the highest bid. In the event that more than one Bidder ties for the highest bid, one of the highest Bidder’s is selected at random, each with equal probability. 
+								<br>
+								4. The winning price is the second-highest bid, meaning the maximum bid, after the winner's bid is removed, from the set of all bids. If the maximum bid was submitted by more than one bidder then the second price will be the maximum bid. For example, if two bidders bid 2 and no one else bids higher then 2 is the winning price. 
+								<br>
+								5. The User is shown an ad and clicks or doesn't click according to its secret probability. 
+								<br>
+								6. Each Bidder is notified about whether they won the round or not, and what the winning price is. Additionally, the winning Bidder (but no other Bidder) is notified about whether the User clicked.
+								<br>
+								7. The balance of the winning Bidder is increased by 1 dollar if the User clicked (0 dollars if the user did not click). It is also decreased by the winning price (whether or not the User clicked).
+								<br><br>
+								<u><strong>Sequence Diagram</strong></u>
+								
+								<center><br> 
+								<span class="image fit">
+								<img src="images/OOP/pic1.png" alt=""/></span>
+								</center>
+								<u>Game Setup</u>
+								<br>
+								1.	Create Users.
+								<br>
+								2.	Create Bidders.
+								<br>
+								3.	Designate number of rounds.
+								<br>
+								4.	Create Auction object with user and bidder list passed in.
+								<br>
+								<u>Running the simulation</u>
+								<br>
+								5.	Auction class will be called and will randomly choose a user.
+								<br>
+								6.	The auction asks if the bidders would like to bid for a specific user.
+								<br>
+								7.	Bidders have the option to bid knowing who the user is.
+								<br>
+								8.	The highest bidder is selected but only gets charged the second highest bid amount. If a tie occurs, then a bidder is randomly chosen out of the two and the tied bid will be the charged bid cost.
+								<br>
+								9.	The ad is shown to the user and the user will randomly choose to watch the ad. Each user has a different probability whether to watch or not.
+								<br>
+								10.	The user sends information to the auction whether the ad was watched, and the auction notifies the winning bidder if the user watches or not.
+								<br>
+								11.	If the user watched, then the bidder is rewarded a dollar.
+								<br>
+								12.	The auction holds the balance of each bidder and updates the accounting books (a dictionary object).
+								<br>
+								13.	Another round will be played until the auction has reached the set number of rounds played.
+								<br><br>
+								<u><strong>Deep Dive into the Architecture and Code</strong></u>
+								<br>
+								<strong>Architecture for each user:</strong>
+								<br>
+								The code below is the user class. Each user object has a random probability designated. The show_ad function in the user class is binary choice to watch or not watch the ad and will return the results to the Auction. The show_ad function is called in the auction class.								<br>
+								<center>
+								<span class="image fit">
+								<img src="images/OOP/user1.PNG" alt=""/>
+								</span>
+								</center>
+								
+								<strong>Architecture for the bidders:</strong>
+								<br>
+								In this section I will go through the architecture of the bidder class at a high level. There are comments in the code to explain each portion of the code.
+								<br>
+								The class Bidder can pass in two parameters, the number of users in the auction and the number of rounds the auction will conduct. Each bidder object will have an idea of the number of users, number of rounds, a dictionary of the users (key is the users and values are the number of times the bidder has won a bid for that user), a personal winnings list, a counter to count the number of bids made, and user dictionary to see how many times a user has watched an ad. The bid function will be called during the auction class. The bid can take in the user parameter. The idea for this code is collect information of the user and make a strategic bid. The way I designed this algorithm is to find that user from the bidders users list and take the ratio of times the user has watched over the times the bidder has paid to show the user an ad. For the first hundred rounds the bidder bids a dollar, not exceeding the winnings cost, to collect information and stop other bidders from knowing the users. By taking each users information early on, I am able to learn about the user and learn the probability of the user clicking the ad or not. Having this information early on I can bid aggressive for the users with high probability. The code has room for improvement to better designate the probability requirement for how willing a bidder will pay. Under the stringent time frame when the code was developed, this was gauged with a couple of simulations. If time was allowed, I would have run over a hundred simulations of the different bidder models and run a regression on probability amount and bis amount to find the highest return. 								<center>
+								<span class="image fit">
+								<img src="images/OOP/bid1.PNG" alt=""/>
+								</span>
+								</center>
+								The notify function within the bidder’s class is to notify the bidder if the user has watched the ad or not. This function is executed in the auction class. This portion of the code is where the bidder collects information on the user’s activity and learns more about the users actions.
+								<center>
+								<span class="image fit">
+								<img src="images/OOP/bid2.PNG" alt=""/>
+								</span>
+								</center>
+								Please note that one bidder was created and tested and competed with other bidder classes created by other students. There was a competition within the programming class to see whose bidder would have the highest return. My bidder and the bidding strategy was in the 90th percentile.
+								<br><br>
+
+								<strong>Architecture for the Auction:</strong>
+								<br>
+								The Auction class takes in the users list and bidders list. The auction creates a dictionary of the bidders and stores information on the bidders’ balance.
+								<center>
+								<span class="image fit">
+								<img src="images/OOP/auction1.PNG" alt=""/>
+								</span>
+								</center>
+
+								The two code snippets below are both snippets of the execute_round function. The execute_round function within the Auction class is to simulate an event/round of the auctioning. First a user is randomly selected, and the bidders’ bid function is called for each bidder. The bidders are told which user was chosen to potentially click their ad and the bid function is called to see whether a bidder wants to bid on that viewer. Afterwards the auction finds the highest bidder by using the max function to parse through the bidders list. Now the auction object needs to find the second highest bidder and that is done by sorting through the bidder dictionary values and choosing the second highest. Then the auction checks to see if the first highest bidder had bid more than the second highest bidder. If the bids are not equal, then the winner is the highest bidder, and the highest bidders pays the cost that is equivalent to the second highest bidders bid. If bids are equal than the bidder is randomly chosen from the two. After the highest bidder has paid the second highest bid price, the user is shown the ad and decides to click it or not. If the ad has been viewed than the balance of the highest bidder has increased by 1 dollar. The other bidders are notified that the bidder has won the bid but not if the viewer has clicked the ad or not. The highest bidder is notified if the viewer had clicked the ad or not.
+								<center>
+								<span class="image fit">
+								<img src="images/OOP/auction2.PNG" alt=""/>
+								<img src="images/OOP/auction3.PNG" alt=""/>
+								</span>
+								</center>
+
+								<u><strong>Running the code</strong></u>
+								<br>
+								If you would like to run my code you can open the Test_py_files.ipynb jupytr notebook and run the code seen below. At the top of the page is my github folder for the program and where you can access the code.  You will need to have the numpy library in order to run the code. The numpy library was used for the “random” functions.								<center><br> 
+								<center>
+								<span class="image fit">
+								<img src="images/OOP/pic2.png" alt=""/>
+								<img src="images/OOP/pic3.png" alt=""/>
+								</span>
+								</center>
+								</p>
 
 							</article>
 
 						<!-- PostGRE SQL -->
 							<article id ="PostSQL">
 								<button type="button" onclick="location.href='#work'"> Back to Project List</button>
-								<h2> Report Title </h2>
+								<h2> Writting the Report</h2>
 
 							</article>
 
 						<!-- Graph Databasses -->
 							<article id ="GraphD">
 								<button type="button" onclick="location.href='#work'"> Back to Project List</button>
-								<h2> Report Title </h2>
+								<h2> Currently In Progress</h2>
 
 							</article>
 
+						<!-- Causal Effects-->
+						<article id ="Causal">
+							<button type="button" onclick="location.href='#work'"> Back to Project List</button>
+							<h2> Currently In Progress</h2>
+
+						</article>
 						<!-- Elements -->
 							<article id="elements">
 								<h2 class="major">Elements</h2>
