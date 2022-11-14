@@ -448,8 +448,8 @@
 									The four libraries used are math, numpy, pandas and pscopg2. The numpy and pandas package will be used to read the SQL query and put the table into a dataframe. The psycopg2 library will connect to a database via host and port number with a username and password.
 									<center>
 									<span class="image fit">
-									<img src="images/postgre_sql/set1.png" alt=""/>
-									<img src="images/postgre_sql/set2.png" alt=""/>
+									<img src="images/postgre_sql/set1.PNG" alt=""/>
+									<img src="images/postgre_sql/set2.PNG" alt=""/>
 									</span>
 									</center>
 
@@ -457,8 +457,9 @@
 									<br>
 									The primary goal of the Entity Relationship Diagram (ERD) is to show the tables relationship. Each box is a table with the table name written above the box. If any foreign key is part of the primary key, we use rounded corners on the box. Inside each box is a list of columns in the table. Columns that are part of the primary key are above the line and also have (PK) after them. Columns that are foreign keys have (FK) after them. When joining, join the foreign key to the primary key in the parent table. Relationships between tables are denoted using the crow's foot notation. The line touches the parent table. The crow's foot touches the child table. Dangerous joins are joins between tables not based on matching a foreign key to a primary key. They are often necessary, but be careful, as they can cause the "extra rows" problem or the "missing rows" problem. When loading data, parent rows must be loaded prior to child rows, otherwise the database will generate a foreign key violation error. When deleting data, child rows must be deleted before parent rows can be deleted, otherwise the database will generate a foreign key violation error.
 									<center>
-									<span class="image fit"><img src="images/postgre_sql/ERD1.png" alt=""/>
-									<span class="image fit"><img src="images/postgre_sql/ERD2.png" alt=""/>
+									<span class="image fit">
+									<img src="images/postgre_sql/ERD1.PNG" alt=""/>
+									<img src="images/postgre_sql/ERD2.PNG" alt=""/>
 									</span>
 									</center>
 
@@ -534,7 +535,7 @@
 									<center>
 									<span class="image fit">
 									<img src="images/postgre_sql/ex7.1.png" alt=""/>
-									<img src="images/postgre_sql/ex7.2.png" alt=""/>
+									<img src="images/postgre_sql/ex7.2.PNG" alt=""/>
 									</span>
 									</center>
 
@@ -544,7 +545,7 @@
 									<center>
 									<span class="image fit">
 									<img src="images/postgre_sql/ex8.1.png" alt=""/>
-									<img src="images/postgre_sql/ex8.2.png" alt=""/>
+									<img src="images/postgre_sql/ex8.2.PNG" alt=""/>
 									</span>
 									</center>
 
@@ -584,7 +585,7 @@
 									The query shown in example 4 and shown below is used to create quick data visualization. The goal of this section is to show that you can pull a quick query and analyze data very fast with python and the pyscopg2 package. The plots below were created using the seaborn and matplotlib libraries. The set up for each example is to show the picture of the python code to create the plots, the plots, and my personal thoughts.
 									<center>
 									<span class="image fit">
-									<img src="images/postgre_sql/viz.png" alt=""/>
+									<img src="images/postgre_sql/viz.PNG" alt=""/>
 									</span>
 									</center>
 									<br><br>
@@ -592,8 +593,8 @@
 									<u>Example 1</u>
 									<center>
 									<span class="image fit">
-									<img src="images/postgre_sql/viz1.1.png" alt=""/>
-									<img src="images/postgre_sql/viz1.2.png" alt=""/>
+									<img src="images/postgre_sql/viz1.1.PNG" alt=""/>
+									<img src="images/postgre_sql/viz1.2.PNG" alt=""/>
 									</span>
 									</center>
 									The plot was created using the matplotlib library and shows the sales of millions of dollars for all the varying stores each month. It appears that Berkeley makes the most sales while Nashville struggles to make equivalent sales. In March, August, and October there seems to be a boom in sales while the months between March and August there seems to be a slow period of sales. This can help prepare the stores to stock more up on the peak season and to wean down the stock in between the peak seasons. 
@@ -602,8 +603,8 @@
 									<u>Example 2</u>
 									<center>
 									<span class="image fit">
-									<img src="images/postgre_sql/viz2.1.png" alt=""/>
-									<img src="images/postgre_sql/viz2.2.png" alt=""/>
+									<img src="images/postgre_sql/viz2.1.PNG" alt=""/>
+									<img src="images/postgre_sql/viz2.2.PNG" alt=""/>
 									</span>
 									</center>
 									The plot shown in example 2 was created using the seaborn library and represents all the sales stores by varying month. The left axis represents total sales in millions of dollars and you can see the same trend as example 1 where March, August, and October had the peak sales. Since example 2 stores followed the same trend the same information can be derived from example 1. The goal of this example is to show the use of a seaborn plot and the ease of use.
@@ -630,7 +631,7 @@
 									<p><small>By: Christian Lee, Ivy Chan, Jonathan Hodges, Dipika Kumar</small>
 									<br><a href = "https://github.com/ejunlee/Portfolio/tree/main/Statistical_Analysis">Click for the Github Repo</a>
 									</p>
-
+									
 									<p>
 										<strong>1. Importance and Context</strong>
 										<br>
@@ -652,7 +653,6 @@
 										<br><br>
 										We use the following fields for voter identification:
 										<br><br>
-
 										<div class="table-wrapper">
 											<table>
 												<thead>
@@ -675,11 +675,12 @@
 													</tr>
 												</tbody>
 											</table>
-										There are multiple ways to identify a respondent's respective party, for instance, voting behavior in past elections, voting in the primaries, the party they are currently registered to, etc. The pre-election self-identified affiliation variable was the best way to measure a respondent's political stance due to the quality and quantity of the data. Their political stance before and during the act of voting was taken into consideration. Values 1 and 2 correspond to the political party, while the other values did not give any more information.
+										</div>
+											There are multiple ways to identify a respondent's respective party, for instance, voting behavior in past elections, voting in the primaries, the party they are currently registered to, etc. The pre-election self-identified affiliation variable was the best way to measure a respondent's political stance due to the quality and quantity of the data. Their political stance before and during the act of voting was taken into consideration. Values 1 and 2 correspond to the political party, while the other values did not give any more information.
 										<br><br>
 										We use the following field for party affiliation:
 										<br><br>
-
+										
 										<div class="table-wrapper">
 											<table>
 												<thead>
@@ -697,6 +698,7 @@
 													</tr>
 												</tbody>
 											</table>
+										</div>
 										How difficult it was for respondents to vote and the main reason respondents did not vote were used to determine the difficulty in voting. The combination of the two factors encompassed how hard it was for voters to cast their vote and why they found voting difficult. The values (2,3,4,5) of having difficulty voting were used in the study to determine which party had more difficulty for V202119. We utilized values that were not in the respondents control that induced difficulty in voting for V202123.
 										<br><br>
 										We use the following field for party affiliation:
@@ -724,8 +726,9 @@
 													</tr>
 												</tbody>
 											</table>
-										After assigning true or false values based on if it was difficult for party members to vote, we observed how many democrats and republicans had difficulty voting. 
 										</div>
+										After assigning true or false values based on if it was difficult for party members to vote, we observed how many democrats and republicans had difficulty voting. 
+										
 										<span class="image fit">
 										<img src="images/stats/viz1.png" alt=""/> 
 										<figcaption><center>Difficulty Voting Democrats(D) vs Republicans(R)</center></figcaption>
@@ -778,7 +781,7 @@
 												</tfoot>
 											</table>
 											</div>
-											
+
 											<strong>3. Result</strong>
 											<br>
 											As we have two independent samples, Democratic voters and Republican voters, and difficulty being defined and organized as binary/boolean values, we derived the counts for total voters and the counts for voters with difficulty for each party. We use the proportion hypothesis test for binary data. 
@@ -824,8 +827,10 @@
 							<article id ="Viz">
 								<button type="button" onclick="location.href='#work'"> Back to Project List</button>
 								<h2> Currently In Progress</h2>
-								<iframe seamless frameborder="0" src="https://public.tableau.com/views/1st_dashboard_made/Dashboard1?:embed=yes&:display_count=yes&:showVizHome=no" width = '650' height = '450'></iframe> 
-								<button type="button" onclick="location.href='https://public.tableau.com/views/1st_dashboard_made/Dashboard1'">Link to dashboard</button>
+								<iframe seamless frameborder="0" src="https://public.tableau.com/views/1st_dashboard_made/Dashboard1?:embed=yes&:display_count=yes&:showVizHome=no" width = '650' height = '450'>
+								</iframe> 
+								<button type="button" onclick="location.href='https://public.tableau.com/views/1st_dashboard_made/Dashboard1'">Link to dashboard
+								</button>
 							</article>
 
 						<!-- Elements -->
