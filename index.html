@@ -447,8 +447,9 @@
 									<br>
 									The four libraries used are math, numpy, pandas and pscopg2. The numpy and pandas package will be used to read the SQL query and put the table into a dataframe. The psycopg2 library will connect to a database via host and port number with a username and password.
 									<center>
-									<span class="image fit"><img src="images/postgre_sql/set1.png" alt=""/>
-									<span class="image fit"><img src="images/postgre_sql/set2.png" alt=""/>
+									<span class="image fit">
+									<img src="images/postgre_sql/set1.png" alt=""/>
+									<img src="images/postgre_sql/set2.png" alt=""/>
 									</span>
 									</center>
 
@@ -559,7 +560,18 @@
 
 									<u>Example 10</u>
 									<br>
-									Update Text
+									For this example, I will put an emphasis on the logic of the code and how it was put together rather than explain the different SQL clauses and statements used. The goal of this example is to find the holiday days (including 7 days prior and after that holiday) where the actual sales differ by more than 15% from their expected sale for that day of the week. 
+									<br><br>
+									In order to accommodate this request by using one query, you will have to rely on several subqueries along with the main query. This is done by using the with clause and 5 subqueries within the main query. Taking this modular approach helps with aggregating different groups and then combining the data into a single desired data frame. The first subquery needed is creating a holidays table from the internal SQL table called holiday and, in my code, denoted as e. This subquery will be the foundation for identifying all the holiday data for that year. The second subquery needed is creating all the days of the year and this can be done using the generate series table. This query will assist the connection to the holidays date and the date within that calendar year.
+									<br><br>
+									The third subquery created will identify all general days of the week in a year and group them for that specific day of the week. This can be done using the generate series table (an internal SQL function) and the group by function. This subquery is within the with clause, and in my code is denoted as c. The importance of this function is to find the number of Monday, Tuesday, etc within a year. This table will be used as the denominator to find the actual sales dollars and expected sales dollars.
+									<br><br>
+									The fourth subquery will be the total sales made for each day by aggregating the sums for each specific day of the week and denoted as a. The coalesce function is introduced to handle the nans. Doing an EDA prior to this study, I found that the nans are days the store is closed like Christmas day. The fifth subquery needed is finding the expected sales of each general day of the week. This is done by aggregating the sum of the sales for each general day of the week. For example, each general day of the week could be Monday, Tuesday, etc and there will be 7 total rows for this table.
+									<br><br>
+									Finally, were close to the finish line and we need to combine all the subqueries to make the table we desire. We first want to use our date analyzed table as the main table in the query and this is because this will list all the days of the year. We will have four join clauses for each of the subqueries and use table d as the frame of reference. 
+									<br><br>
+									The first subquery is joining the day of the week (table c) for each day of the year (table d) on the day of the year key. Next, we will join the each day of the year table (table d) with the actual sales (table a) of that day on the sale date key. We will join the each day of the year table (table d) with the expected sales for that day table (table b) on the day of the week key. The next join will be a tricky join where you do a join with the holidays table (table e) with each day of the year table (table d). The join uses a between clause with a numerical function to include the 7 days before the holiday date and 7 days after the holiday date using the date of the year key. This will connect the holiday with the days of the holiday week. Now we can apply some mathematical function to get the actual sales data, expected sales data, and ratio of the actual and expected. This is done by grouping the holiday name, data analyzed, and day of the week. The actual sales dollars are the total sales made that day divided by the count of the general day of the week. The expected sales are the total sales for the general day of the week by the count of the general day of the week. The ratio is the actual sales dollars divided by expected sales dollar. The last thing to do is filter the dates to see where the store underperformed in sales by more than 15%. By using the where clause and setting the ratio of the actual and expected to be less than 85% you can code this desired table.
+									<br>
 									<center>
 									<span class="image fit">
 									<img src="images/postgre_sql/ex9.1.png" alt=""/>
@@ -594,7 +606,7 @@
 									<img src="images/postgre_sql/viz2.2.png" alt=""/>
 									</span>
 									</center>
-									Text Here
+									The plot shown in example 2 was created using the seaborn library and represents all the sales stores by varying month. The left axis represents total sales in millions of dollars and you can see the same trend as example 1 where March, August, and October had the peak sales. Since example 2 stores followed the same trend the same information can be derived from example 1. The goal of this example is to show the use of a seaborn plot and the ease of use.
 									<br><br>
 
 									<u><strong>Conclusion</strong></u>
@@ -713,10 +725,12 @@
 												</tbody>
 											</table>
 										After assigning true or false values based on if it was difficult for party members to vote, we observed how many democrats and republicans had difficulty voting. 
-										<center><br> 
+										
 										<span class="image fit">
-										<img src="images/stats/viz1.png" alt=""/> <figcaption> 1: Difficulty Voting Democrats(D) vs Republicans(R) </figcaption></span>
-										</center>
+										<img src="images/stats/viz1.png" alt=""/> 
+										<figcaption><center>Difficulty Voting Democrats(D) vs Republicans(R)</center></figcaption>
+										</span>
+										
 
 										Democrats had more true and false values, which aligned with the population of democrats being higher than republicans. However, we looked into the true and false cases as a percentage of the respective party population samples. The percentage difference between true and false was not notable between parties. Utilizing the party as a grouping variable and defining the response variable as proportional count of difficulties per group we can conduct some statistical tests. 
 										<br><br>
@@ -775,8 +789,11 @@
 											<br><br>
 											The proportion hypothesis test returns a p-value of 0.02847, which leads us to fail to reject the null hypothesis as it is not within the rejection region (< 0.025).The result is not statistically significant.
 											<br>
-											<center> <span class = "image fit"> <img src="images/stats/viz2.png"/></span>
-											</center>
+											
+											<span class = "image fit"> 
+											<img src="images/stats/viz2.png"/>
+											</span>
+											
 											<strong>4. Discussion</strong>
 											While this is limited based on how Democrats and Republicans responded to ANES interviews, our study found evidence that voting difficulty does not have a strong relationship with the voter's political party. It is consistent with our findings that there is no significant difference in the Democrat and Republican populations we compared for voting difficulty. Additionally, we have shown that difficulty wasn’t experienced at a very high rate across either party, with just over 10% of Democrats and Republicans expressing this in their survey responses. 
 											<br>
