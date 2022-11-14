@@ -572,7 +572,7 @@
 									The query shown in example 4 and shown below is used to create quick data visualization. The goal of this section is to show that you can pull a quick query and analyze data very fast with python and the pyscopg2 package. The plots below were created using the seaborn and matplotlib libraries. The set up for each example is to show the picture of the python code to create the plots, the plots, and my personal thoughts.
 									<center>
 									<span class="image fit">
-									<img src="images/postgre_sql/fig0.png" alt=""/>
+									<img src="images/postgre_sql/viz.png" alt=""/>
 									</span>
 									</center>
 									<br><br>
@@ -580,28 +580,18 @@
 									<u>Example 1</u>
 									<center>
 									<span class="image fit">
-									<img src="images/postgre_sql/fig1.1.png" alt=""/>
-									<img src="images/postgre_sql/fig1.2.png" alt=""/>
+									<img src="images/postgre_sql/viz1.1.png" alt=""/>
+									<img src="images/postgre_sql/viz1.2.png" alt=""/>
 									</span>
 									</center>
-									Text Here
+									The plot was created using the matplotlib library and shows the sales of millions of dollars for all the varying stores each month. It appears that Berkeley makes the most sales while Nashville struggles to make equivalent sales. In March, August, and October there seems to be a boom in sales while the months between March and August there seems to be a slow period of sales. This can help prepare the stores to stock more up on the peak season and to wean down the stock in between the peak seasons. 
 									<br><br>
 
 									<u>Example 2</u>
 									<center>
 									<span class="image fit">
-									<img src="images/postgre_sql/fig2.1.png" alt=""/>
-									<img src="images/postgre_sql/fig2.2.png" alt=""/>
-									</span>
-									</center>
-									Text Here
-									<br><br>
-
-									<u>Example 3</u>
-									<center>
-									<span class="image fit">
-									<img src="images/postgre_sql/fig3.1.png" alt=""/>
-									<img src="images/postgre_sql/fig3.2.png" alt=""/>
+									<img src="images/postgre_sql/viz2.1.png" alt=""/>
+									<img src="images/postgre_sql/viz2.2.png" alt=""/>
 									</span>
 									</center>
 									Text Here
@@ -725,7 +715,7 @@
 										After assigning true or false values based on if it was difficult for party members to vote, we observed how many democrats and republicans had difficulty voting. 
 										<center><br> 
 										<span class="image fit">
-										<img src="images/stats/fig1.png" alt=""/> <figcaption> 1: Difficulty Voting Democrats(D) vs Republicans(R) </figcaption></span>
+										<img src="images/stats/viz1.png" alt=""/> <figcaption> 1: Difficulty Voting Democrats(D) vs Republicans(R) </figcaption></span>
 										</center>
 
 										Democrats had more true and false values, which aligned with the population of democrats being higher than republicans. However, we looked into the true and false cases as a percentage of the respective party population samples. The percentage difference between true and false was not notable between parties. Utilizing the party as a grouping variable and defining the response variable as proportional count of difficulties per group we can conduct some statistical tests. 
@@ -785,7 +775,7 @@
 											<br><br>
 											The proportion hypothesis test returns a p-value of 0.02847, which leads us to fail to reject the null hypothesis as it is not within the rejection region (< 0.025).The result is not statistically significant.
 											<br>
-											<center> <span class = "image fit"> <img src="images/stats/fig2.png"/></span>
+											<center> <span class = "image fit"> <img src="images/stats/viz2.png"/></span>
 											</center>
 											<strong>4. Discussion</strong>
 											While this is limited based on how Democrats and Republicans responded to ANES interviews, our study found evidence that voting difficulty does not have a strong relationship with the voter's political party. It is consistent with our findings that there is no significant difference in the Democrat and Republican populations we compared for voting difficulty. Additionally, we have shown that difficulty wasn’t experienced at a very high rate across either party, with just over 10% of Democrats and Republicans expressing this in their survey responses. 
