@@ -621,208 +621,437 @@
 							<!-- Data Wrangling -->
 							<article id ="DataW">
 								<button type="button" onclick="location.href='#work'"> Back to Project List</button>
-								<h2> Writting the Report </h2>
+								<br><br>
+								<h2 cllass ='major'><center>Data Wrangling</center></h2>
+								<p><small>By: Christian Lee</small>
+								</p>
+
+								<p>
+									<strong>Introduction</strong>
+									<br>
+									The project setting was a data engineering group receiving third party vendor data that is essential for analytics. The goal is to review the data in postgres, perform data validation, staging the new formatted data tables, importing CSV/Nested JSON files, and exporting data tables to CSV/Excel for business stakeholders. The data received is a JSON file and will be parsed and staged into postgres.
+
+									<br><br>
+									<strong>Setup</strong>
+									<br>
+									The four libraries used are math, numpy, pandas and pscopg2. The numpy and pandas package will be used to read the SQL query and put the table into a dataframe. The psycopg2 library will connect to a database via host and port number with a username and password. The csv and JSON library will be used to assist in parsing the data.
+									<span class="image fit">
+									<img src="images/data_wrangling/pic1.png" alt=""/> 
+									</span>
+									
+									<strong>CSV to Postgres Database</strong>
+									<br>
+									In this scenario, the vendor is providing clean data in a CSV format. We will approach this scenario with creating a table, with different data columns for each csv file. The csv file has one sheet and is easily imported into postgres. 
+									<span class="image fit">
+									<img src="images/data_wrangling/pic2.png" alt=""/> 
+									</span>
+									In this example I first looked at the CSV to see the different data columns for the respective file. After doing a little investigation, I created a peak product mapping table with a product_id, peak product id, and a primary key column.  The reason for this being a peak product mapping table is first seeing the data in SQL and if everything checks out, we will then transfer the data in our data warehouse.
+									<br><br>
+									<span class="image fit">
+									<img src="images/data_wrangling/pic3.png" alt=""/> 
+									</span>
+									Here we copy the data from the csv to our newly created table. We execute our cursor to make sure the transaction has occurred within our database.
+									<br><br>
+									<span class="image fit">
+									<img src="images/data_wrangling/pic4.png" alt=""/>
+									<img src="images/data_wrangling/pic5.png" alt=""/> 
+									</span>
+									After importing the data, I check to see if the data was imported correctly by running a simple SQL query.
+									
+									<br><br>
+									<strong>Vendor Provides a nested JSON File Scenario</strong>
+									<br>
+									In this business case, I parse and select data from the nested JSON file and export the data to CSV. The rationale for doing this data transformation is to easily import the data into the postgres database. A flat JSON file would be easy to import into a postgres database, however a nested JSON file would need to be modified.
+									<span class="image fit">
+									<img src="images/data_wrangling/pic6.png" alt=""/>
+									<img src="images/data_wrangling/pic7.png" alt=""/> 
+									<img src="images/data_wrangling/pic8.png" alt=""/>
+									</span>
+									We first want to develop a custom function to deal with the vendors JSON file. I first went through the vendors data framework and learned the setup to build the structure for the code. I first want to create an object of the JSON file to work with. I then create a list to store the dictionaries that are being pulled from the JSON file. The individual records will be dictionaries inserted to a final list which will be exported into a csv file. After creating each tables list, we run a for loop to go through each sale. The vendors data frame is first each sale, and within each data record there are information on the stores and customer list. Within each sales record are records on the quantity and type of good sold.
+									<br><br>
+									<span class="image fit">
+									<img src="images/data_wrangling/pic9.png" alt=""/> 
+									</span>
+									Above is the code to create a csv file for each data table, write data within each file, and saving the CSV file.
+									<br><br>
+									<span class="image fit">
+									<img src="images/data_wrangling/pic10.png" alt=""/> 
+									</span>
+									The above code is to call the function for that particular JSON file. If the vendor JSON file is consistently the same, then the code is valid. However, if the vendor provides another JSON framework, the code will need to be modified to extract data.
+									<br><br>
+									<span class="image fit">
+									<img src="images/data_wrangling/pic11.png" alt=""/> 
+									</span>
+									Above is the picture of the results to ensure the file has been created in the right format for postgres importation and this is one way to do a quality check.
+									<br><br>
+									<strong>Create, Load, and Validate Staging Tables</strong>
+									<br>
+									Now that we have the files prepped and ready to be imported into the database, we will need to create the staging tables.
+									<span class="image fit">
+									<img src="images/data_wrangling/pic12.png" alt=""/>
+									<img src="images/data_wrangling/pic13.png" alt=""/>
+									<img src="images/data_wrangling/pic14.png" alt=""/>
+									<img src="images/data_wrangling/pic15.png" alt=""/>
+									</span>
+									Here we create the tables with a stage_id in order to track the records. I assign a varchar to each data type in case there are any issues with the data, and if the data type is incorrect then importing the data will generate errors. Then we will import the csv files into the database. I will go through the process of data validation before creating official tables.
+									<br><br>
+									<span class="image fit">
+									<img src="images/data_wrangling/pic16.png" alt=""/>
+									<img src="images/data_wrangling/pic17.png" alt=""/>
+									</span>
+									Here we verify the tables were loaded correctly.
+									<br><br>
+									<span class="image fit">
+									<img src="images/data_wrangling/pic18.png" alt=""/> 
+									</span>
+									The goal of the query above is to check if the numeric data columns are numeric and id the sale_date columns are formatted correctly. If the data cannot be transformed to numeric, the query would indicate an error.
+									<br><br>
+									<span class="image fit">
+									<img src="images/data_wrangling/pic19.png" alt=""/> 
+									</span>
+									Here we run a query to validate the math on the sub_total, tax, and total_amount in the staged 1 peak sales table. The query returns an empty data frame, which tells us that the data does not have any conflicting issues with the total cost.
+									<br><br>
+									<span class="image fit">
+									<img src="images/data_wrangling/pic20.png" alt=""/> 
+									</span>
+									The query above is to validate the math between the two different tables. The query uses a with statement to make the comparison possible and in order to do numerical comparison we had to change the data type to numeric. In this case the two data tables have consistency with the total amount charged for each sale.
+									<br><br>
+									<span class="image fit">
+									<img src="images/data_wrangling/pic21.png" alt=""/> 
+									</span>
+									Here we insert the records from the stage_1_peak_sales into the sales table. We include a where clause to not take any records that are already in the sales table.
+									<br><br>
+									<span class="image fit">
+									<img src="images/data_wrangling/pic22.png" alt=""/> 
+									</span>
+									The query above is to remove the stage_1_peak_sales to maintain good data practices and remove any unneeded data.
+								</p>
 							</article>
 
 							<!-- Statistical Analysis -->
-								<article id ="Stats">
-									<button type="button" onclick="location.href='#work'"> Back to Project List</button>
+							<article id ="Stats">
+								<button type="button" onclick="location.href='#work'"> Back to Project List</button>
+								<br><br>
+								<h2 class = "major"> <center>Democrats or Republicans.<br>Who had more difficulty<br> voting?</center> </h2>
+								<p><small>By: Christian Lee, Ivy Chan, Jonathan Hodges, Dipika Kumar</small>
+								<br><a href = "https://github.com/ejunlee/Portfolio/tree/main/Statistical_Analysis">Click for the Github Repo</a>
+								</p>
+								
+								<p>
+									<strong>1. Importance and Context</strong>
+									<br>
+									Voter engagement for the 2020 United States presidential election was at record levels, with more voters saying “it really matters” who wins the presidency than at any point over the last twenty years. At the same time, challenges such as the pandemic and social unrest led to half of the registered voters indicating it would be difficult to vote in the election. There has been a significant change since October 2018, shortly before that year’s midterm election, when 85% of registered voters said it would be easy to vote in the midterm elections. A better understanding of the various influencers of voter turnout is useful for your organization for party strategists and campaign managers.
+									<br>
+									This study will focus on the 2020 election and better understand the difficulty levels in voting between parties, which is one of many factors impacting voter turnout. Specifically, the goal of the analysis is to address the following research question:
+									<center>Did Democratic voters or Republican voters experience more difficulty voting in the 2020 election? 
+									</center>
+									<br>
+									As consultants we are here to answer this question in order to provide guidance and a foundation for your future research. This includes determining if voter difficulty is a major bellwether of turnout and, if so, further decomposing the factors that lead to these difficulty levels, such as registration, absentee versus in-person voting, long waits at polling places, or bad weather, which can be analyzed in the future. In addition, this analysis will allow us to identify if the difference in difficulty voting between Republicans vs. Democrats was statistically significant in the recent election. If the results are statistically significant, the reasons for difficulty in voting can be further assessed and mitigated.
 									<br><br>
-									<h2 class = "major"> <center>Democrats or Republicans.<br>Who had more difficulty<br> voting?</center> </h2>
-									<p><small>By: Christian Lee, Ivy Chan, Jonathan Hodges, Dipika Kumar</small>
-									<br><a href = "https://github.com/ejunlee/Portfolio/tree/main/Statistical_Analysis">Click for the Github Repo</a>
-									</p>
+									<strong>2. Data and Methodology</strong>
+									<br>
+									The study utilized data from the 2020 Times Series Study conducted by the American National Election Studies (ANES). The Times Series Study interviewed 8280 individuals and comprised pre-election and post-election interviews from August 2020 through the end of December 2020. The sample we created from a subset of the ANES Times Series Study is limited in terms of generalizing to the US voter population across all demographic groups. This is due to the fact that we didn't leverage the weighting provided by ANES that is based on the US census.
+									<br><br>
+									Before answering the question of which political party had more difficulty voting, we need to operationalize the concepts, including who is a voter, their political affiliation, and the type of difficulty the individual had. Having this information provides context to exhibit who had more difficulty voting statistically. 
+									<br><br>
+									To classify a respondent as a voter, we look at those who have already registered to vote (at their current address, another address, or without an address) or are planning on registering to vote. As registering is a prerequisite for voting, we believe this variable is a strong indicator of being a voter. For V201008, values 1, 2, and 3 gave information about their registration address, while the other values did not give additional information. V201009 determined if voters were registered to vote, and value 1 gave applicable information for the study. 
+									<br><br>
+									We use the following fields for voter identification:
+									<br><br>
+									<div class="table-wrapper">
+										<table>
+											<thead>
+												<tr>
+													<th>Variable_Name</th>
+													<th>Description</th>
+													<th>Value</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>V201008</td>
+													<td>PRE: WHERE IS R REGISTERED TO VOTE (PRE-ELECTION)</td>
+													<td>1,2,3</td>
+												</tr>
+												<tr>
+													<td>V201009</td>
+													<td>PRE: WEB ONLY: IS R WITHOUT ADDRESS REGISTERED TO VOTE (PRE-ELECTION)</td>
+													<td>1</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+										There are multiple ways to identify a respondent's respective party, for instance, voting behavior in past elections, voting in the primaries, the party they are currently registered to, etc. The pre-election self-identified affiliation variable was the best way to measure a respondent's political stance due to the quality and quantity of the data. Their political stance before and during the act of voting was taken into consideration. Values 1 and 2 correspond to the political party, while the other values did not give any more information.
+									<br><br>
+									We use the following field for party affiliation:
+									<br><br>
 									
-									<p>
-										<strong>1. Importance and Context</strong>
-										<br>
-										Voter engagement for the 2020 United States presidential election was at record levels, with more voters saying “it really matters” who wins the presidency than at any point over the last twenty years. At the same time, challenges such as the pandemic and social unrest led to half of the registered voters indicating it would be difficult to vote in the election. There has been a significant change since October 2018, shortly before that year’s midterm election, when 85% of registered voters said it would be easy to vote in the midterm elections. A better understanding of the various influencers of voter turnout is useful for your organization for party strategists and campaign managers.
-										<br>
-										This study will focus on the 2020 election and better understand the difficulty levels in voting between parties, which is one of many factors impacting voter turnout. Specifically, the goal of the analysis is to address the following research question:
-										<center>Did Democratic voters or Republican voters experience more difficulty voting in the 2020 election? 
-										</center>
-										<br>
-										As consultants we are here to answer this question in order to provide guidance and a foundation for your future research. This includes determining if voter difficulty is a major bellwether of turnout and, if so, further decomposing the factors that lead to these difficulty levels, such as registration, absentee versus in-person voting, long waits at polling places, or bad weather, which can be analyzed in the future. In addition, this analysis will allow us to identify if the difference in difficulty voting between Republicans vs. Democrats was statistically significant in the recent election. If the results are statistically significant, the reasons for difficulty in voting can be further assessed and mitigated.
-										<br><br>
-										<strong>2. Data and Methodology</strong>
-										<br>
-										The study utilized data from the 2020 Times Series Study conducted by the American National Election Studies (ANES). The Times Series Study interviewed 8280 individuals and comprised pre-election and post-election interviews from August 2020 through the end of December 2020. The sample we created from a subset of the ANES Times Series Study is limited in terms of generalizing to the US voter population across all demographic groups. This is due to the fact that we didn't leverage the weighting provided by ANES that is based on the US census.
-										<br><br>
-										Before answering the question of which political party had more difficulty voting, we need to operationalize the concepts, including who is a voter, their political affiliation, and the type of difficulty the individual had. Having this information provides context to exhibit who had more difficulty voting statistically. 
-										<br><br>
-										To classify a respondent as a voter, we look at those who have already registered to vote (at their current address, another address, or without an address) or are planning on registering to vote. As registering is a prerequisite for voting, we believe this variable is a strong indicator of being a voter. For V201008, values 1, 2, and 3 gave information about their registration address, while the other values did not give additional information. V201009 determined if voters were registered to vote, and value 1 gave applicable information for the study. 
-										<br><br>
-										We use the following fields for voter identification:
-										<br><br>
-										<div class="table-wrapper">
-											<table>
-												<thead>
-													<tr>
-														<th>Variable_Name</th>
-														<th>Description</th>
-														<th>Value</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td>V201008</td>
-														<td>PRE: WHERE IS R REGISTERED TO VOTE (PRE-ELECTION)</td>
-														<td>1,2,3</td>
-													</tr>
-													<tr>
-														<td>V201009</td>
-														<td>PRE: WEB ONLY: IS R WITHOUT ADDRESS REGISTERED TO VOTE (PRE-ELECTION)</td>
-														<td>1</td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-											There are multiple ways to identify a respondent's respective party, for instance, voting behavior in past elections, voting in the primaries, the party they are currently registered to, etc. The pre-election self-identified affiliation variable was the best way to measure a respondent's political stance due to the quality and quantity of the data. Their political stance before and during the act of voting was taken into consideration. Values 1 and 2 correspond to the political party, while the other values did not give any more information.
-										<br><br>
-										We use the following field for party affiliation:
-										<br><br>
-										
-										<div class="table-wrapper">
-											<table>
-												<thead>
-													<tr>
-														<th>Variable_Name</th>
-														<th>Description</th>
-														<th>Value</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td>V201228</td>
-														<td>PRE: PARTY ID: DOES R THINK OF SELF AS DEMOCRAT, REPUBLICAN, OR INDEPENDENT</td>
-														<td>1,2</td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-										How difficult it was for respondents to vote and the main reason respondents did not vote were used to determine the difficulty in voting. The combination of the two factors encompassed how hard it was for voters to cast their vote and why they found voting difficult. The values (2,3,4,5) of having difficulty voting were used in the study to determine which party had more difficulty for V202119. We utilized values that were not in the respondents control that induced difficulty in voting for V202123.
-										<br><br>
-										We use the following field for party affiliation:
-										<br><br>
+									<div class="table-wrapper">
+										<table>
+											<thead>
+												<tr>
+													<th>Variable_Name</th>
+													<th>Description</th>
+													<th>Value</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>V201228</td>
+													<td>PRE: PARTY ID: DOES R THINK OF SELF AS DEMOCRAT, REPUBLICAN, OR INDEPENDENT</td>
+													<td>1,2</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									How difficult it was for respondents to vote and the main reason respondents did not vote were used to determine the difficulty in voting. The combination of the two factors encompassed how hard it was for voters to cast their vote and why they found voting difficult. The values (2,3,4,5) of having difficulty voting were used in the study to determine which party had more difficulty for V202119. We utilized values that were not in the respondents control that induced difficulty in voting for V202123.
+									<br><br>
+									We use the following field for party affiliation:
+									<br><br>
 
-										<div class="table-wrapper">
-											<table>
-												<thead>
-													<tr>
-														<th>Variable_Name</th>
-														<th>Description</th>
-														<th>Value</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td>V202119</td>
-														<td>POST: HOW DIFFICULT WAS IT FOR R TO VOTE</td>
-														<td>2, 3, 4, 5</td>
-													</tr>
-													<tr>
-														<td>V202123</td>
-														<td>POST: MAIN REASON R DID NOT VOTE</td>
-														<td>9, 10, 11, 12, 13, 14, 15</td>
-													</tr>
-												</tbody>
-											</table>
+									<div class="table-wrapper">
+										<table>
+											<thead>
+												<tr>
+													<th>Variable_Name</th>
+													<th>Description</th>
+													<th>Value</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>V202119</td>
+													<td>POST: HOW DIFFICULT WAS IT FOR R TO VOTE</td>
+													<td>2, 3, 4, 5</td>
+												</tr>
+												<tr>
+													<td>V202123</td>
+													<td>POST: MAIN REASON R DID NOT VOTE</td>
+													<td>9, 10, 11, 12, 13, 14, 15</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									After assigning true or false values based on if it was difficult for party members to vote, we observed how many democrats and republicans had difficulty voting. 
+									
+									<span class="image fit">
+									<img src="images/stats/viz1.PNG" alt=""/> 
+									<figcaption><center>Difficulty Voting Democrats(D) vs Republicans(R)</center></figcaption>
+									</span>
+									
+
+									Democrats had more true and false values, which aligned with the population of democrats being higher than republicans. However, we looked into the true and false cases as a percentage of the respective party population samples. The percentage difference between true and false was not notable between parties. Utilizing the party as a grouping variable and defining the response variable as proportional count of difficulties per group we can conduct some statistical tests. 
+									<br><br>
+									We evaluated various reputable hypothesis tests to determine which is best for answering our research question. After reviewing the assumptions that must be met for each test, we were able to narrow our choices down to the two-sample proportion test and the comparison version of the Wilcoxon rank sum test. As we evaluated difficulty as a binary true or false value instead of a scale of ordered categories, the data was determined to be more appropriately wrangled for the proportion test. Additionally, the Wilcoxon rank sum test is of lesser statistical power; therefore, we determined the proportion test was best suited for our analysis from these two test options. 
+									<br><br>
+									The proportional statistic assumptions were validated for proper use of the test statistic. The first assumption for the proportional two-group comparison test was independence and identical distributions (i.i.d). Independence can be assumed since random sampling occurred, and one sample's information cannot be inferred from other samples. However, the population of the samples changes from 8280 (pre-election interviews) to 7,782 (post-election interviews). There is a 7% decrease in the population size, which will not heavily affect the probability distribution. The following other assumptions are correct as the sample population follows a binomial distribution, and the data are simple random values from the population. 
+									<br><br>
+									While evaluating for practical significance, Cohen’s d is not well suited as it requires normality. For our binary data, we chose the Phi coefficient, which yielded a value of -0.031. The result indicates that there is virtually no relationship between political party and voter difficulty, meaning other factors drive difficulty.
+									<br><br>
+									Below is the accounting table summarizing the data wrangling after the exploratory data analysis (EDA) of the dataset.
+									<br><br>
+									<div class="table-wrapper">
+										<table>
+											<thead>
+												<tr>
+													<th>Cause</th>
+													<th>Number of Samples Available for Analysis (after removal for cause)</th>
+													<th>Removed Number Samples for cause</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>Start</td>
+													<td>8280</td>
+													<td>0</td>
+												</tr>
+												<tr>
+													<td>Non-Voter</td>
+													<td>7888</td>
+													<td>392</td>
+												</tr>
+												<tr>
+													<td>Independents (non-partisans) or no party affiliation provided</td>
+													<td>5280</td>
+													<td>2608</td>
+												</tr>
+											</tbody>
+											<tfoot>
+												<tr>
+													<th colspan="3">
+													<font size= "-1"><i>Note: For the response variable value that is not included in the selections, we assign a binary/boolean value to the record. Therefore, we do not have any missing or out-of-range response variable values. </i> </font>
+	
+													</th>
+												</tr>
+											</tfoot>
+										</table>
 										</div>
-										After assigning true or false values based on if it was difficult for party members to vote, we observed how many democrats and republicans had difficulty voting. 
+
+										<strong>3. Result</strong>
+										<br>
+										As we have two independent samples, Democratic voters and Republican voters, and difficulty being defined and organized as binary/boolean values, we derived the counts for total voters and the counts for voters with difficulty for each party. We use the proportion hypothesis test for binary data. 
+										<br><br>
+										<i><strong>Null Hypothesis</strong>: The proportion of Democrat voters with difficulty voting is equal to the proportion of Republican voters with difficulty voting.
+										<br>
+										H0: p1=p2, versus select one HA: p1≠p2 
+										</i>
+										<br><br>
+										The proportion hypothesis test returns a p-value of 0.02847, which leads us to fail to reject the null hypothesis as it is not within the rejection region (< 0.025).The result is not statistically significant.
+										<br>
 										
-										<span class="image fit">
-										<img src="images/stats/viz1.PNG" alt=""/> 
-										<figcaption><center>Difficulty Voting Democrats(D) vs Republicans(R)</center></figcaption>
+										<span class = "image fit"> 
+										<img src="images/stats/viz2.PNG"/>
 										</span>
 										
+										<strong>4. Discussion</strong>
+										While this is limited based on how Democrats and Republicans responded to ANES interviews, our study found evidence that voting difficulty does not have a strong relationship with the voter's political party. It is consistent with our findings that there is no significant difference in the Democrat and Republican populations we compared for voting difficulty. Additionally, we have shown that difficulty wasn’t experienced at a very high rate across either party, with just over 10% of Democrats and Republicans expressing this in their survey responses. 
+										<br>
+										Since the 2020 election had the highest turnout in United States history, it does not appear that difficulty had a significant role in preventing people from getting to the polls. Instead, it may make sense for future research to look at other predictors of voter turnout, such as education or socioeconomic status.
 
-										Democrats had more true and false values, which aligned with the population of democrats being higher than republicans. However, we looked into the true and false cases as a percentage of the respective party population samples. The percentage difference between true and false was not notable between parties. Utilizing the party as a grouping variable and defining the response variable as proportional count of difficulties per group we can conduct some statistical tests. 
-										<br><br>
-										We evaluated various reputable hypothesis tests to determine which is best for answering our research question. After reviewing the assumptions that must be met for each test, we were able to narrow our choices down to the two-sample proportion test and the comparison version of the Wilcoxon rank sum test. As we evaluated difficulty as a binary true or false value instead of a scale of ordered categories, the data was determined to be more appropriately wrangled for the proportion test. Additionally, the Wilcoxon rank sum test is of lesser statistical power; therefore, we determined the proportion test was best suited for our analysis from these two test options. 
-										<br><br>
-										The proportional statistic assumptions were validated for proper use of the test statistic. The first assumption for the proportional two-group comparison test was independence and identical distributions (i.i.d). Independence can be assumed since random sampling occurred, and one sample's information cannot be inferred from other samples. However, the population of the samples changes from 8280 (pre-election interviews) to 7,782 (post-election interviews). There is a 7% decrease in the population size, which will not heavily affect the probability distribution. The following other assumptions are correct as the sample population follows a binomial distribution, and the data are simple random values from the population. 
-										<br><br>
-										While evaluating for practical significance, Cohen’s d is not well suited as it requires normality. For our binary data, we chose the Phi coefficient, which yielded a value of -0.031. The result indicates that there is virtually no relationship between political party and voter difficulty, meaning other factors drive difficulty.
-										<br><br>
-										Below is the accounting table summarizing the data wrangling after the exploratory data analysis (EDA) of the dataset.
-										<br><br>
-										<div class="table-wrapper">
-											<table>
-												<thead>
-													<tr>
-														<th>Cause</th>
-														<th>Number of Samples Available for Analysis (after removal for cause)</th>
-														<th>Removed Number Samples for cause</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td>Start</td>
-														<td>8280</td>
-														<td>0</td>
-													</tr>
-													<tr>
-														<td>Non-Voter</td>
-														<td>7888</td>
-														<td>392</td>
-													</tr>
-													<tr>
-														<td>Independents (non-partisans) or no party affiliation provided</td>
-														<td>5280</td>
-														<td>2608</td>
-													</tr>
-												</tbody>
-												<tfoot>
-													<tr>
-														<th colspan="3">
-														<font size= "-1"><i>Note: For the response variable value that is not included in the selections, we assign a binary/boolean value to the record. Therefore, we do not have any missing or out-of-range response variable values. </i> </font>
-		
-														</th>
-													</tr>
-												</tfoot>
-											</table>
-											</div>
+								</p>
+								
+								
 
-											<strong>3. Result</strong>
-											<br>
-											As we have two independent samples, Democratic voters and Republican voters, and difficulty being defined and organized as binary/boolean values, we derived the counts for total voters and the counts for voters with difficulty for each party. We use the proportion hypothesis test for binary data. 
-											<br><br>
-											<i><strong>Null Hypothesis</strong>: The proportion of Democrat voters with difficulty voting is equal to the proportion of Republican voters with difficulty voting.
-											<br>
-											H0: p1=p2, versus select one HA: p1≠p2 
-											</i>
-											<br><br>
-											The proportion hypothesis test returns a p-value of 0.02847, which leads us to fail to reject the null hypothesis as it is not within the rejection region (< 0.025).The result is not statistically significant.
-											<br>
-											
-											<span class = "image fit"> 
-											<img src="images/stats/viz2.PNG"/>
-											</span>
-											
-											<strong>4. Discussion</strong>
-											While this is limited based on how Democrats and Republicans responded to ANES interviews, our study found evidence that voting difficulty does not have a strong relationship with the voter's political party. It is consistent with our findings that there is no significant difference in the Democrat and Republican populations we compared for voting difficulty. Additionally, we have shown that difficulty wasn’t experienced at a very high rate across either party, with just over 10% of Democrats and Republicans expressing this in their survey responses. 
-											<br>
-											Since the 2020 election had the highest turnout in United States history, it does not appear that difficulty had a significant role in preventing people from getting to the polls. Instead, it may make sense for future research to look at other predictors of voter turnout, such as education or socioeconomic status.
-
-									</p>
-									
-									
-
-								</article>
+							</article>
 							
 							<!-- Causal Effects-->
 							<article id ="Causal">
 								<button type="button" onclick="location.href='#work'"> Back to Project List</button>
-								<h2> Currently In Progress</h2>
+								<br><br>
+								<h2> <center>Estimating the Impact of Synthetic Diamond’s Weight on Sale Price</center></h2>
+								<p>
+									<small>By: Christian Lee, Ivy Chan, Jonathan Hodges, Dipika Kumar</small>
+									<br>
+									<a href = 'https://github.com/ejunlee/Portfolio/tree/main/causal_modeling'>Click for the Github Repo</a>
+								</p>
+									<strong>1. Introduction</strong>
+									<br>
+									New technological advances in synthetic diamond manufacturing have led to increased carats of the produced
+									synthetic diamonds. Acme Synthetic Diamond Company is still using the older manufacturing process. Since
+									upgrading the new equipment will be expensive, they have to decide if it is economically viable. Generally,
+									diamonds with larger weights or carat values sell for higher prices, a more precise data analysis is required
+									to justify such a large investment.
+									<br><br>
+									This study estimates how large of a factor the carats of synthetic diamonds are on the sale price of the
+									diamond. We leverage synthetic diamond sales observations with the sold diamonds’ characteristics, including
+									carat, color, clarity, cut, length, width, and depth. Applying a set of regression models, we estimate how
+									much the synthetic diamond weight in carats influences price with respect to other factors.
+									<br><br>
+									<strong>2. Data and Methodology</strong>
+									<br>
+									The data in this study comes from the diamonds dataset on Kaggle.
+									It was made publicly available by Abhijit Singh in 2021.The data includes 53,940 observations of synthetic diamond sales with 10 variables.
+									We transformed 7 of the 10 variables to the log scale to remove skewness and make them more symmetrical
+									with more normal distributions. We have determined that records with a value of zero in columns volume,
+									length, width, depth, and table were to be removed since it is impossible for a physical dimension of a diamond
+									to be an absolute zero. This filtering removes 20 observations and leaves us with 53,920 observations. In
+									addition, we removed 17 observations that have the infinite natural log volume value and that leaves us with
+									53,903 observationsin our data set
+									<br><br>
+									We assigned 30% of the data to the exploration set, 16,171 observations, and the remaining 70% of the
+									data to the confirmation set, which is 37,732 observations. The large observation sizes are sufficient for the
+									central limit theorem (CLT) to hold. The exploration set was used to inspect the data’s trend and build
+									models, while the confirmation set was used to test our model on new data.
+									<span class = "image fit">
+									<img src = "images/causal/tab1.jpg" alt="">
+									<figcaption><center>Table 1: Accounting Table</center></figcaption>
+									</span>
+									To predict the price model with the different diamond features, we had to operationalize varying features. The
+									price is metric and was operationalized as the response variable of the model, while the carat, volume, clarity,
+									and color were used as predictor variables. The volume variable, a metric feature, is made of three different
+									features in the data set, the multiplication of the width_in_mm, height_in_mm, and depth_in_mm of the
+									diamond. The rationale for multiplying the three metric features to be one feature denoted as volume is
+									to simplify the interpretation of the model. The clarity, color, and cut are categorical variables that were
+									operationalized by being hot encoded to ordinal features. Having these variables as ordinals defines the
+									categorical variables to their price worth based on their physical properties and will generate a more precise
+									model.
+									<br><br>
+									Utilizing the exploration set and going through the EDA process, plotting the different variables against
+									price, generating different histograms, and running some models with the exploration set, we determined
+									a natural log of of skewed variables depth_in_percent, depth_in_mm, carat, price, width_in_mm,
+									length_in_mm, table_in_percent would produce a better model.
+									<span class = "image fit">
+									<img src = "images/causal/fig1.png" alt="">
+									<figcaption><center>Figure 1: Synthetic Diamond Price Based on Carat and Clarity</center></figcaption>
+									<br>
+									<img src = "images/causal/eqn.PNG" alt="">
+									</span>
+									We are interested in estimating the sale price of synthetic diamonds based on the weight of the diamonds in
+									carats. β0 is the intercept, and β1 is the expected change in price based on per unit change in C (carats). Z
+									is a row vector of additional covariates and γ is a column vector of coefficients.
+									<br><br>
+									<strong>3. Results</strong>
+									<br>
+									The stargazer table shows the results of the three log-log regressions, and model 1 is our baseline model.
+									Across all linear models, the key coefficient was carats and was highly and statistically significant. It
+									is a positive coefficient with point estimates ranging from 1.68 to 1.87. Model 2 has the highest positive
+									coefficient for carats of 1.87, while models 1 and 3 also have the positive coefficient for carats of 1.68 and 1.27
+									respectively. We notice in model 3, volume is highly correlated with carat and takes away some explainability
+									of carat, so we decided model 2 is best suited for our estimations. Applying model 2 with the point estimates
+									of 1.87, we interpreted the result that a 10% increase in carats results in a 19.51% increase in price, and a
+									20% increase in carats is a 40.63% increase in price. As a result, the new equipment with the new process
+									that increases the carats has both practical and statistical significance to the synthetic diamond sales price.
+									<br><br>
+									In model 2, we include the independent variables of color and clarity in the linear models. We want to
+									find out if these two variables have any effect on the industrial diamond price. The regression table resultsshow that both variables are highly and statistically significant and have a negative coefficient. Therefore,
+									it confirms that they do affect the industrial diamond price.
+									<br><br>
+									The main difference between models 2 and 3 is the additional independent variable of volume. In model
+									3, we added an interaction term of volume, which is the product of industrial diamond length, width, and
+									depth.The regression table shows that it is also statistically significant.
+									<span class = "image fit">
+									<img src = "images/causal/fig2.jpg" alt="">
+									<figcaption><center>Table 2: Stargazer Table</center></figcaption>
+									</span>
+									<strong>4. Limitations</strong>
+									<br>
+									The model has over fifty-seven thousand data points which satisfy the large sample assumption model
+									and allows us to apply a less stringent OLS regression with fewer assumptions. The first assumption is
+									independence and identically distributed (IID) Data. The data could be assumed independent since the
+									data was collected randomly; however, the geographic sampling location of the data is unknown. This could
+									lead to the clustering of information on diamond prices, and the geographic location of buying a diamond
+									could vary the price. The data is identically distributed since we did not remove a significant amount of
+									data (less than 0.04% of data) before or after creating the model and the data points come from the same
+									probability distribution. Please refer to the brief description section for data removal before modeling.
+									<br><br>
+									The other aspect to investigate is the variance of the tails. We plotted the histograms of the metric variables
+									(model, price, carat, and volume) and noticed non-normal distributions. The distributions seen were bimodal
+									and skewed, which could lead to a bias in the model’s estimate. There seems to be some conflict with the
+									large sample assumption of a unique best linear predictor (BLP), given the distribution of price on carat
+									does display heavy tails. This does not mean the predictor is inaccurate in predicting price; however, we can
+									not assume there is a unique BLP.
+									<br><br>
+									Omitted variables do not interact with the key variable in the true model in the classic omitted variables
+									framework. There may be unknown variables that may bias our estimates that could bias our estimate
+									positively or negatively. For example, the labor costs leading to the sale of diamonds could be higher in certain economic conditions, driving up the cost of goods sold and, ultimately, the diamond price. There are
+									such variables that we cannot account for, but it could contribute to our omitted variable bias.
+									<br><br>
+									<strong>5. Conclusion</strong>
+									<br>
+									In our models, carat is the most important feature in determining the price of a synthetic diamond with
+									the largest coefficient in the regression tables. However, the regression tables also showed there are other
+									predictors of note in volume, clarity and color, potentially adding bias to our estimates that showed 10% and
+									20% increases in carats leads to 19.51% and 40.63% increases of sale price respectively. That said, with 0.98
+									for R-squared we have enough confidence to recommend that Acme Synthetic Diamond Company should
+									upgrade to the new equipment. We estimate the larger diamonds produced in carats will bring in more sales
+									revenue, allowing them to pay off the new equipment investment in about three years.
+									In future research, we may want to collect additional data to estimate the diamond price further. Possible
+									new variables include seasonality, Gemological Institute of America (GIA) certification, the energy used in
+									the manufacturing process, the diamond shape, the jewelry type, or other factors. We hope our research can
+									help Acme Synthetic Diamond Company produce beautiful and profitable industrial diamonds for generations
+									of customers to come.
 
+								<p>
+								
+								</p>
 							</article>
 
 							<!-- Graph Databasses -->
-								<article id ="GraphD">
-									<button type="button" onclick="location.href='#work'"> Back to Project List</button>
-									<h2> Currently In Progress</h2>
+							<article id ="GraphD">
+								<button type="button" onclick="location.href='#work'"> Back to Project List</button>
+								<h2> Currently In Progress</h2>
 
-								</article>
+							</article>
 
 							<!-- Visual Dashboard-->
 							<article id ="Viz">
@@ -877,35 +1106,35 @@
 							</article>
 						
 							<!-- Guidelines to Dashboard-->
-						<article id = "guidelines_viz">
-							<button type="button" onclick="location.href = '#Viz'">Back to Dashboards
-							</button>
-							<br><br>
-							<h2>My personal belief in developing Visual Boards</h2>
-							<p>
-							When building this dashboard, I used 5 key principles to design the look and feel of the dashboard.
-							<br><br>
-							1.)	Gathering the Requirements
-							<br>
-							When building a dashboard its good to start off by understanding and stating the goal of the project/dashboard. Next is knowing who will be using the dashboard and design the interaction with the person analytical maturity. Through out the process you should be trying to have touch points with the users to curate the dashboard even further. 
-							<br>
-							Throughout the development you will consistently refine and reprioritize the business questions, discover and document insights, and determine the different plots and figures needed to effectively answer the question.
-							<br><br>
-							2.)	Create a Template
-							<br>
-							When creating a template use figures and plots that are relevant and do not leave room for fluff. Use blank text and boxes to figure the placement and design to your grid. Use varying size and positions to create hierarchy and look at the color scheme last.
-							<br><br>
-							3.)	Use Icons and Art to your Advantage
-							<br>
-							Want to use icons that not distracting, communicate its meaning and easy to recognize. Make sure the icons follow with the format and style of the dashboard, and this can be achieved with using the same color scheme. If the icons cannot fully descript an section, use concise labels to provide context.
-							<br><br>
-							4.)	Choose Colors that Matter
-							<br><br>
-							5.)	Be Specific with your Fonts
-							<br>
-							Stick to on legible font and no more than 4 different font sizes on the board. Be strategic with fonts colors, bolding, and use alignment correctly (Not everything has to be center aligned).
-							</p>
-						</article>
+							<article id = "guidelines_viz">
+								<button type="button" onclick="location.href = '#Viz'">Back to Dashboards
+								</button>
+								<br><br>
+								<h2>My personal belief in developing Visual Boards</h2>
+								<p>
+								When building this dashboard, I used 5 key principles to design the look and feel of the dashboard.
+								<br><br>
+								1.)	Gathering the Requirements
+								<br>
+								When building a dashboard its good to start off by understanding and stating the goal of the project/dashboard. Next is knowing who will be using the dashboard and design the interaction with the person analytical maturity. Through out the process you should be trying to have touch points with the users to curate the dashboard even further. 
+								<br>
+								Throughout the development you will consistently refine and reprioritize the business questions, discover and document insights, and determine the different plots and figures needed to effectively answer the question.
+								<br><br>
+								2.)	Create a Template
+								<br>
+								When creating a template use figures and plots that are relevant and do not leave room for fluff. Use blank text and boxes to figure the placement and design to your grid. Use varying size and positions to create hierarchy and look at the color scheme last.
+								<br><br>
+								3.)	Use Icons and Art to your Advantage
+								<br>
+								Want to use icons that not distracting, communicate its meaning and easy to recognize. Make sure the icons follow with the format and style of the dashboard, and this can be achieved with using the same color scheme. If the icons cannot fully descript an section, use concise labels to provide context.
+								<br><br>
+								4.)	Choose Colors that Matter
+								<br><br>
+								5.)	Be Specific with your Fonts
+								<br>
+								Stick to on legible font and no more than 4 different font sizes on the board. Be strategic with fonts colors, bolding, and use alignment correctly (Not everything has to be center aligned).
+								</p>
+							</article>
 
 						<!-- Elements -->
 							<article id="elements">
